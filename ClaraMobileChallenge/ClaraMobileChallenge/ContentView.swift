@@ -46,7 +46,31 @@ struct ContentView: View {
     }
     
     private func authenticate() {
-        OauthAuthenticator.shared.authorize()
+
+        Task {
+            do {
+                let result = try await OauthAuthenticator.shared.getArtistsAsync()
+                switch result {
+                case .success(let artists):
+                    print(artists)
+                case .failure(let error):
+                    handleError(error)
+                }
+            }
+        }
+    }
+
+    private func handleError(_ error: OAuthError) {
+        switch error {
+        case .invalidURL:
+            <#code#>
+        case .invalidAuthentication:
+            <#code#>
+        case .invalidData:
+            <#code#>
+        case .invalidResponse(let error):
+            <#code#>
+        }
     }
 }
 

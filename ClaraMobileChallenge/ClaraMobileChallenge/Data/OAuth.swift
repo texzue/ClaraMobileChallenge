@@ -12,7 +12,7 @@ enum DiscogsServerDetails {
     static let baseURLString = "https://api.discogs.com"
 }
 
-enum OauthDetails {
+enum OauthConstants {
     static let ConsumerKey = "SgbpgBWRZOdqnpEilzoS"
     static let ConsumerSecret = "XssAOKbOYfFzHMHFZhjIWuHAnEkTbzyS"
     static let RequestTokenURLString = "https://api.discogs.com/oauth/request_token"
@@ -39,28 +39,87 @@ enum DiscogsServerResponseCode: Int {
     case InternalServerError = 500
 }
 
+enum OAuthError: Error {
+    case invalidURL
+    case invalidAuthentication
+    case invalidData
+    case invalidResponse(error: OAuthSwiftError)
+}
+
 final class OauthAuthenticator {
-    private let oauthswift = OAuth1Swift(
-        consumerKey: OauthDetails.ConsumerKey,
-        consumerSecret: OauthDetails.ConsumerSecret,
-        requestTokenUrl: OauthDetails.RequestTokenURLString,
-        authorizeUrl: OauthDetails.AuthorizeURLSring,
-        accessTokenUrl: OauthDetails.AccessTokenURLstring
+    private static let oauthswift = OAuth1Swift(
+        consumerKey: OauthConstants.ConsumerKey,
+        consumerSecret: OauthConstants.ConsumerSecret,
+        requestTokenUrl: OauthConstants.RequestTokenURLString,
+        authorizeUrl: OauthConstants.AuthorizeURLSring,
+        accessTokenUrl: OauthConstants.AccessTokenURLstring
     )
-    
+
     static let shared = OauthAuthenticator()
     
-    func authorize() {
-        let _ = oauthswift.authorize(withCallbackURL: OauthDetails.CallbackURLString) { result in
+    func authorize() async throws {
+        let asa = OauthAuthenticator.oauthswift.authorize(withCallbackURL: OauthConstants.CallbackURLString) { result in
             // result -> Result<OAuthSwift.TokenSuccess, OAuthSwiftError>
             switch result {
             case .success(let token):
+                print("oauthToken: \(token.credential.oauthToken)")
                 print("token credential: \(token.credential)")
                 print("token parameters: \(token.parameters)")
                 print("token response: \(String(describing: token.response?.description))")
             case .failure(let error):
-                print("error: \(error)")
+                print("error: \(String(describing: error))")
             }
         }
+    }
+
+    func getArtists(closure: @escaping (Result<String, OAuthError>) -> Void) {
+        guard let artistCallbackURL = URL(string: "https://api.discogs.com/artists/1?callback=callbackname")
+        else { closure(.failure(OAuthError.invalidURL)); return }
+
+
+        _ = OauthAuthenticator.oauthswift.client.get(artistCallbackURL) { result in
+            switch result {
+            case .success(let response):
+                if let response = response.string {
+                    closure(.success(response.string))
+                } else {
+                    closure(.failure(OAuthError.invalidData))
+                }
+            case .failure(let error):
+                closure(.failure(OAuthError.invalidResponse(error: error)))
+            }
+        }
+    }
+
+    typealias ServiceResponse = (Data?, HTTPURLResponse)
+    func getArtistsAsync() async throws -> Result<ServiceResponse, OAuthError> {
+        guard let artistCallbackURL = URL(string: "https://api.discogs.com/database/search?release_title=nevermind&artist=nirvana&per_page=3&page=1")
+        else { return .failure(OAuthError.invalidURL) }
+
+        return try await withCheckedThrowingContinuation { continuation in
+            
+            OauthAuthenticator.oauthswift.client.get(artistCallbackURL, headers: constructHeaders()) { result in
+                switch result {
+                case .success(let response):
+                    continuation.resume(returning: .success((response.data, response.response)))
+                case .failure(let error):
+                    switch error {
+                    case .accessDenied, .authorizationPending:
+                        continuation.resume(returning: .failure(.invalidAuthentication))
+                    default:
+                        continuation.resume(returning: .failure(.invalidResponse(error: error)))
+                    }
+                    continuation.resume(returning: .failure(.invalidResponse(error: error)))
+                }
+            }
+        }
+    }
+
+    func constructHeaders() -> OAuthSwift.Headers {
+        .init(
+            uniqueKeysWithValues: [
+                (key:"User-Agent", value: OauthConstants.UserAgent)
+            ]
+        )
     }
 }
