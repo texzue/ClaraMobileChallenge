@@ -1,0 +1,608 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FE6AD1CB2E1FA6D10007E6A4 /* OAuthSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FE6AD1CA2E1FA6D10007E6A4 /* OAuthSwift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FE6AD1AD2E1FA6760007E6A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE6AD1952E1FA6750007E6A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE6AD19C2E1FA6750007E6A4;
+			remoteInfo = ClaraMobileChallenge;
+		};
+		FE6AD1B72E1FA6760007E6A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FE6AD1952E1FA6750007E6A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FE6AD19C2E1FA6750007E6A4;
+			remoteInfo = ClaraMobileChallenge;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FE6AD19D2E1FA6750007E6A4 /* ClaraMobileChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClaraMobileChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE6AD1AC2E1FA6760007E6A4 /* ClaraMobileChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaraMobileChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE6AD1B62E1FA6760007E6A4 /* ClaraMobileChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClaraMobileChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		FE6AD1D42E1FAC2F0007E6A4 /* Exceptions for "ClaraMobileChallenge" folder in "ClaraMobileChallenge" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FE6AD19C2E1FA6750007E6A4 /* ClaraMobileChallenge */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		FE6AD19F2E1FA6750007E6A4 /* ClaraMobileChallenge */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				FE6AD1D42E1FAC2F0007E6A4 /* Exceptions for "ClaraMobileChallenge" folder in "ClaraMobileChallenge" target */,
+			);
+			path = ClaraMobileChallenge;
+			sourceTree = "<group>";
+		};
+		FE6AD1AF2E1FA6760007E6A4 /* ClaraMobileChallengeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClaraMobileChallengeTests;
+			sourceTree = "<group>";
+		};
+		FE6AD1B92E1FA6760007E6A4 /* ClaraMobileChallengeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ClaraMobileChallengeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FE6AD19A2E1FA6750007E6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE6AD1CB2E1FA6D10007E6A4 /* OAuthSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AD1A92E1FA6760007E6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AD1B32E1FA6760007E6A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FE6AD1942E1FA6740007E6A4 = {
+			isa = PBXGroup;
+			children = (
+				FE6AD19F2E1FA6750007E6A4 /* ClaraMobileChallenge */,
+				FE6AD1AF2E1FA6760007E6A4 /* ClaraMobileChallengeTests */,
+				FE6AD1B92E1FA6760007E6A4 /* ClaraMobileChallengeUITests */,
+				FE6AD19E2E1FA6750007E6A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FE6AD19E2E1FA6750007E6A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FE6AD19D2E1FA6750007E6A4 /* ClaraMobileChallenge.app */,
+				FE6AD1AC2E1FA6760007E6A4 /* ClaraMobileChallengeTests.xctest */,
+				FE6AD1B62E1FA6760007E6A4 /* ClaraMobileChallengeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FE6AD19C2E1FA6750007E6A4 /* ClaraMobileChallenge */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6AD1C02E1FA6760007E6A4 /* Build configuration list for PBXNativeTarget "ClaraMobileChallenge" */;
+			buildPhases = (
+				FE6AD1992E1FA6750007E6A4 /* Sources */,
+				FE6AD19A2E1FA6750007E6A4 /* Frameworks */,
+				FE6AD19B2E1FA6750007E6A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				FE6AD19F2E1FA6750007E6A4 /* ClaraMobileChallenge */,
+			);
+			name = ClaraMobileChallenge;
+			packageProductDependencies = (
+				FE6AD1CA2E1FA6D10007E6A4 /* OAuthSwift */,
+			);
+			productName = ClaraMobileChallenge;
+			productReference = FE6AD19D2E1FA6750007E6A4 /* ClaraMobileChallenge.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FE6AD1AB2E1FA6760007E6A4 /* ClaraMobileChallengeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6AD1C32E1FA6760007E6A4 /* Build configuration list for PBXNativeTarget "ClaraMobileChallengeTests" */;
+			buildPhases = (
+				FE6AD1A82E1FA6760007E6A4 /* Sources */,
+				FE6AD1A92E1FA6760007E6A4 /* Frameworks */,
+				FE6AD1AA2E1FA6760007E6A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE6AD1AE2E1FA6760007E6A4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FE6AD1AF2E1FA6760007E6A4 /* ClaraMobileChallengeTests */,
+			);
+			name = ClaraMobileChallengeTests;
+			packageProductDependencies = (
+			);
+			productName = ClaraMobileChallengeTests;
+			productReference = FE6AD1AC2E1FA6760007E6A4 /* ClaraMobileChallengeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FE6AD1B52E1FA6760007E6A4 /* ClaraMobileChallengeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FE6AD1C62E1FA6760007E6A4 /* Build configuration list for PBXNativeTarget "ClaraMobileChallengeUITests" */;
+			buildPhases = (
+				FE6AD1B22E1FA6760007E6A4 /* Sources */,
+				FE6AD1B32E1FA6760007E6A4 /* Frameworks */,
+				FE6AD1B42E1FA6760007E6A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FE6AD1B82E1FA6760007E6A4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FE6AD1B92E1FA6760007E6A4 /* ClaraMobileChallengeUITests */,
+			);
+			name = ClaraMobileChallengeUITests;
+			packageProductDependencies = (
+			);
+			productName = ClaraMobileChallengeUITests;
+			productReference = FE6AD1B62E1FA6760007E6A4 /* ClaraMobileChallengeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FE6AD1952E1FA6750007E6A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					FE6AD19C2E1FA6750007E6A4 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					FE6AD1AB2E1FA6760007E6A4 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = FE6AD19C2E1FA6750007E6A4;
+					};
+					FE6AD1B52E1FA6760007E6A4 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = FE6AD19C2E1FA6750007E6A4;
+					};
+				};
+			};
+			buildConfigurationList = FE6AD1982E1FA6750007E6A4 /* Build configuration list for PBXProject "ClaraMobileChallenge" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FE6AD1942E1FA6740007E6A4;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FE6AD1C92E1FA6D10007E6A4 /* XCRemoteSwiftPackageReference "OAuthSwift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = FE6AD19E2E1FA6750007E6A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FE6AD19C2E1FA6750007E6A4 /* ClaraMobileChallenge */,
+				FE6AD1AB2E1FA6760007E6A4 /* ClaraMobileChallengeTests */,
+				FE6AD1B52E1FA6760007E6A4 /* ClaraMobileChallengeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE6AD19B2E1FA6750007E6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AD1AA2E1FA6760007E6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AD1B42E1FA6760007E6A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FE6AD1992E1FA6750007E6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AD1A82E1FA6760007E6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FE6AD1B22E1FA6760007E6A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FE6AD1AE2E1FA6760007E6A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE6AD19C2E1FA6750007E6A4 /* ClaraMobileChallenge */;
+			targetProxy = FE6AD1AD2E1FA6760007E6A4 /* PBXContainerItemProxy */;
+		};
+		FE6AD1B82E1FA6760007E6A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FE6AD19C2E1FA6750007E6A4 /* ClaraMobileChallenge */;
+			targetProxy = FE6AD1B72E1FA6760007E6A4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FE6AD1BE2E1FA6760007E6A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FE6AD1BF2E1FA6760007E6A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FE6AD1C12E1FA6760007E6A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClaraMobileChallenge/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AppaClaraMobileChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FE6AD1C22E1FA6760007E6A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ClaraMobileChallenge/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AppaClaraMobileChallenge;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		FE6AD1C42E1FA6760007E6A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Appa.ClaraMobileChallengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClaraMobileChallenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ClaraMobileChallenge";
+			};
+			name = Debug;
+		};
+		FE6AD1C52E1FA6760007E6A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Appa.ClaraMobileChallengeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ClaraMobileChallenge.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ClaraMobileChallenge";
+			};
+			name = Release;
+		};
+		FE6AD1C72E1FA6760007E6A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Appa.ClaraMobileChallengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ClaraMobileChallenge;
+			};
+			name = Debug;
+		};
+		FE6AD1C82E1FA6760007E6A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = D77JCFWKWX;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Appa.ClaraMobileChallengeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ClaraMobileChallenge;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FE6AD1982E1FA6750007E6A4 /* Build configuration list for PBXProject "ClaraMobileChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AD1BE2E1FA6760007E6A4 /* Debug */,
+				FE6AD1BF2E1FA6760007E6A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE6AD1C02E1FA6760007E6A4 /* Build configuration list for PBXNativeTarget "ClaraMobileChallenge" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AD1C12E1FA6760007E6A4 /* Debug */,
+				FE6AD1C22E1FA6760007E6A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE6AD1C32E1FA6760007E6A4 /* Build configuration list for PBXNativeTarget "ClaraMobileChallengeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AD1C42E1FA6760007E6A4 /* Debug */,
+				FE6AD1C52E1FA6760007E6A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FE6AD1C62E1FA6760007E6A4 /* Build configuration list for PBXNativeTarget "ClaraMobileChallengeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FE6AD1C72E1FA6760007E6A4 /* Debug */,
+				FE6AD1C82E1FA6760007E6A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FE6AD1C92E1FA6D10007E6A4 /* XCRemoteSwiftPackageReference "OAuthSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OAuthSwift/OAuthSwift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FE6AD1CA2E1FA6D10007E6A4 /* OAuthSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FE6AD1C92E1FA6D10007E6A4 /* XCRemoteSwiftPackageReference "OAuthSwift" */;
+			productName = OAuthSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FE6AD1952E1FA6750007E6A4 /* Project object */;
+}
