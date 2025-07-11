@@ -1,35 +1,31 @@
-//
-//  ContentView.swift
 //  ClaraMobileChallenge
-//
-//  Created by alice on 10/07/25.
-//
+//  Created by ETS on 10/07/25.
 
 import SwiftUI
 import SwiftData
 
 struct ContentView: View {
     
-    var items: [String] = ["Ho", "Gola"]
+    @State private var artistName: String = "https://api.discogs.com/database/"
     
     var body: some View {
         
-        List {
-            ForEach(items, id: \.self) { item in
-                Text(item)
+        LazyVStack(alignment: .leading, spacing: 1.su) {
+            Button("Autenticate") {
+                authenticate()
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
+            
+            TextField("Artist Name", text: $artistName)
+                .textFieldStyle(.roundedBorder)
+            
+            Button("Get Nirvana") {
+                getArtist()
             }
-            ToolbarItem {
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
-                }
+            
+            Button("Search artist") {
+                getArtistDetails()
             }
-        }
+        }.padding(.horizontal, 2.su)
         
     }
 
@@ -46,10 +42,37 @@ struct ContentView: View {
     }
     
     private func authenticate() {
-
         Task {
             do {
-                let result = try await OauthAuthenticator.shared.getArtistsAsync()
+                let result = try await OauthAuthenticator.shared.autenticate()
+                switch result {
+                case .success:
+                    print()
+                case .failure(let error):
+                    handleError(error)
+                }
+            }
+        }
+    }
+    
+    private func getArtist() {
+        Task {
+            do {
+                let result = try await EndpointCaller.shared.getArtistsAsync()
+                switch result {
+                case .success(let artists):
+                    print(artists)
+                case .failure(let error):
+                    handleError(error)
+                }
+            }
+        }
+    }
+    
+    private func getArtistDetails() {
+        Task {
+            do {
+                let result = try await EndpointCaller.shared.getArtistDetails(artist: artistName)
                 switch result {
                 case .success(let artists):
                     print(artists)
@@ -63,13 +86,17 @@ struct ContentView: View {
     private func handleError(_ error: OAuthError) {
         switch error {
         case .invalidURL:
-            <#code#>
+            print("Invalid URL")
         case .invalidAuthentication:
-            <#code#>
+            Task {
+                try await OauthAuthenticator.shared.autenticate()
+            }
         case .invalidData:
-            <#code#>
+            print("Invalid Data")
         case .invalidResponse(let error):
-            <#code#>
+            print("Invalid Response \(error)")
+        case .emptyData:
+            print("Empty Data")
         }
     }
 }

@@ -1,12 +1,10 @@
-//
-//  OAuth.swift
 //  ClaraMobileChallenge
-//
-//  Created by alice on 10/07/25.
-//
+//  Created by ETS on 10/07/25.
 
 import Foundation
 import OAuthSwift
+
+typealias ServiceResponse = (data: Data?, httpResponse: HTTPURLResponse)
 
 enum DiscogsServerDetails {
     static let baseURLString = "https://api.discogs.com"
@@ -28,14 +26,15 @@ struct OAuthResponse {
 }
 
 enum DiscogsServerResponseCode: Int {
-    case Success = 200              // Requested data is provided in the response body
-    case SuccessContinue = 201      // You’ve sent a POST request to a list of resources to create a new one
-    case NoContent = 204            // The request was successful, but no data
-    case Unauthorized = 400         // You’re attempting to access a resource that first requires authentication
-    case Forbidden = 403            // You’re not allowed to access this resource. Even if you authenticated
-    case NotFound = 404             // The resource you requested doesn’t exist
-    case MethodNotAllowed = 405     // You’re trying to use an HTTP verb that isn’t supported by the resource
-    case UnprocessableEntity = 422  // Something semantically wrong with the body of the request. JSON malformed in body
+    case Success = 200                  // Requested data is provided in the response body
+    case SuccessContinue = 201          // You’ve sent a POST request to a list of resources to create a new one
+    case NoContent = 204                // The request was successful, but no data
+    case Unauthorized = 400             // You’re attempting to access a resource that first requires authentication
+    case AuthenticationRequired = 401   // You’re attempting to access a resource that first requires authentication
+    case Forbidden = 403                // You’re not allowed to access this resource. Even if you authenticated
+    case NotFound = 404                 // The resource you requested doesn’t exist
+    case MethodNotAllowed = 405         // You’re trying to use an HTTP verb that isn’t supported by the resource
+    case UnprocessableEntity = 422      // Something semantically wrong with the body of the request. JSON malformed in body
     case InternalServerError = 500
 }
 
@@ -43,10 +42,12 @@ enum OAuthError: Error {
     case invalidURL
     case invalidAuthentication
     case invalidData
+    case emptyData
     case invalidResponse(error: OAuthSwiftError)
 }
 
 final class OauthAuthenticator {
+    
     private static let oauthswift = OAuth1Swift(
         consumerKey: OauthConstants.ConsumerKey,
         consumerSecret: OauthConstants.ConsumerSecret,
@@ -57,17 +58,20 @@ final class OauthAuthenticator {
 
     static let shared = OauthAuthenticator()
     
-    func authorize() async throws {
-        let asa = OauthAuthenticator.oauthswift.authorize(withCallbackURL: OauthConstants.CallbackURLString) { result in
-            // result -> Result<OAuthSwift.TokenSuccess, OAuthSwiftError>
-            switch result {
-            case .success(let token):
-                print("oauthToken: \(token.credential.oauthToken)")
-                print("token credential: \(token.credential)")
-                print("token parameters: \(token.parameters)")
-                print("token response: \(String(describing: token.response?.description))")
-            case .failure(let error):
-                print("error: \(String(describing: error))")
+    func autenticate() async throws -> Result<OAuthSwift.TokenSuccess, OAuthError> {
+        return try await withCheckedThrowingContinuation { continuation in
+            _ = OauthAuthenticator.oauthswift.authorize(withCallbackURL: OauthConstants.CallbackURLString) { result in
+                switch result {
+                case .success(let token):
+                    print("oauthToken: \(token.credential.oauthToken)")
+                    print("token credential: \(token.credential)")
+                    print("token parameters: \(token.parameters)")
+                    print("token response: \(String(describing: token.response?.description))")
+                    return continuation.resume(returning: .success(token))
+                case .failure(let error):
+                    print("error: \(String(describing: error))")
+                    return continuation.resume(returning: .failure(.invalidResponse(error: error)))
+                }
             }
         }
     }
@@ -91,31 +95,36 @@ final class OauthAuthenticator {
         }
     }
 
-    typealias ServiceResponse = (Data?, HTTPURLResponse)
-    func getArtistsAsync() async throws -> Result<ServiceResponse, OAuthError> {
-        guard let artistCallbackURL = URL(string: "https://api.discogs.com/database/search?release_title=nevermind&artist=nirvana&per_page=3&page=1")
-        else { return .failure(OAuthError.invalidURL) }
-
+    func performOauthRequest(with url: URL) async throws -> Result<ServiceResponse, OAuthError> {
         return try await withCheckedThrowingContinuation { continuation in
             
-            OauthAuthenticator.oauthswift.client.get(artistCallbackURL, headers: constructHeaders()) { result in
+            OauthAuthenticator.oauthswift.client.get(url, headers: constructHeaders()) { result in
                 switch result {
                 case .success(let response):
                     continuation.resume(returning: .success((response.data, response.response)))
                 case .failure(let error):
                     switch error {
+                    case let .requestError(requestError, _):
+                        let responseCode = DiscogsServerResponseCode(rawValue: (requestError as NSError).code)
+                        switch responseCode {
+                        case .AuthenticationRequired:
+                            continuation.resume(returning: .failure(.invalidAuthentication))
+                        case .Forbidden, .InternalServerError, .MethodNotAllowed, .NoContent, .NotFound, .Success, .SuccessContinue, .Unauthorized, .UnprocessableEntity, .none:
+                            continuation.resume(returning: .failure(.invalidResponse(error: error)))
+                        }
                     case .accessDenied, .authorizationPending:
                         continuation.resume(returning: .failure(.invalidAuthentication))
                     default:
                         continuation.resume(returning: .failure(.invalidResponse(error: error)))
                     }
-                    continuation.resume(returning: .failure(.invalidResponse(error: error)))
                 }
             }
         }
     }
-
-    func constructHeaders() -> OAuthSwift.Headers {
+    
+    // MARK: - Private Methods
+    
+    private func constructHeaders() -> OAuthSwift.Headers {
         .init(
             uniqueKeysWithValues: [
                 (key:"User-Agent", value: OauthConstants.UserAgent)

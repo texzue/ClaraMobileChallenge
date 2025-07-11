@@ -1,17 +1,11 @@
-//
-//  ClaraMobileChallengeApp.swift
 //  ClaraMobileChallenge
-//
-//  Created by alice on 10/07/25.
-//
+//  Created by ETS on 10/07/25.
 
 import SwiftUI
-import SwiftData
 import OAuthSwift
 
 @main
 struct ClaraMobileChallengeApp: App {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {
         WindowGroup {
@@ -22,11 +16,11 @@ struct ClaraMobileChallengeApp: App {
     }
     
     func handleURL(_ url: URL) {
-        if (url.host == "oauth-callback") {
+        switch url.host {
+        case "oauth-callback":
             OAuthSwift.handle(url: url)
-        } else {
-            // Google provider is the only one with your.bundle.id url schema.
-            OAuthSwift.handle(url: url)
+        default:
+            assertionFailure("Unsupported host: \(String(describing: url.host))")
         }
     }
 }

@@ -1,9 +1,5 @@
-//
-//  Item.swift
 //  ClaraMobileChallenge
-//
-//  Created by alice on 10/07/25.
-//
+//  Created by ETS on 10/07/25.
 
 import Foundation
 import SwiftData

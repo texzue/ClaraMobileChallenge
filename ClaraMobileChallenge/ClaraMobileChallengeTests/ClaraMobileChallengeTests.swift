@@ -1,9 +1,5 @@
-//
-//  ClaraMobileChallengeTests.swift
-//  ClaraMobileChallengeTests
-//
-//  Created by alice on 10/07/25.
-//
+//  ClaraMobileChallenge
+//  Created by ETS on 10/07/25.
 
 import XCTest
 @testable import ClaraMobileChallenge
