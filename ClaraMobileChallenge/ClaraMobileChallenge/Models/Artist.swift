@@ -1,55 +1,72 @@
 //  ClaraMobileChallenge
-//  Created by ETS on 10/07/25.
+//  Created by Emmanuel Texis
 
 import Foundation
 
-struct Artist: Codable {
-    let country: String?
-    let year: String? // Year can sometimes be a string like "Unknown"
-    let format: [String]?
-    let label: [String]?
-    let type: String?
-    let genre: [String]?
-    let style: [String]?
-    let id: Int?
-    let barcode: [String]?
-    let userData: UserData?
-    let masterId: Int?
-    let masterUrl: String?
-    let uri: String?
-    let catno: String?
-    let title: String?
-    let thumb: String? // Thumbnail image URL
-    let coverImage: String? // Full-size cover image URL
-    let resourceUrl: String?
-    let community: Community?
+struct Artist: Codable, Identifiable {
+    let aliases: [Alias]?
+    let dataQuality: String?
+    let id: Int
+    let images: [ArtistImage]?
+    let members: [Member]?
+    let message: String?
+    let namevariations: [String]?
+    let profile: String? // Band description
+    private let releasesUrl: String?
+    private let resourceUrl: String?
+    private let uri: String?
+    private let urls: [String]?
+}
 
-    enum CodingKeys: String, CodingKey {
-        case country, year, format, label, type, genre, style, id, barcode, uri, catno, title, thumb
-        case userData = "user_data"
-        case masterId = "master_id"
-        case masterUrl = "master_url"
-        case coverImage = "cover_image"
-        case resourceUrl = "resource_url"
-        case community
+extension Artist {
+    struct Member: Codable, Identifiable {
+        let active: Bool?
+        let id: Int?
+        let name: String?
+        let resourceUrl: String?
+    }
+
+    struct ArtistImage: Codable {
+        let height: Int?
+        let resourceURL: String?
+        let type: String?
+        let uri: String?
+        let uri150: String?
+        let width: Int?
+    }
+
+    struct Alias: Codable, Identifiable {
+        let id: Int
+        let name: String?
+        let resourceUrl: URL?
     }
 }
 
-// MARK: - User Data Struct
-
-struct UserData: Codable {
-    let inWantlist: Bool?
-    let inCollection: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case inWantlist = "in_wantlist"
-        case inCollection = "in_collection"
+extension Artist {
+    private func getURL(_ uri: String) -> URL? {
+        let pictureURL = uri.replacingOccurrences(of: "\"", with: "")
+        return URL(string: pictureURL)
     }
-}
+    
+    var uriURL: URL? {
+        guard let url = self.uri else { return nil }
+        return getURL(url)
+    }
 
-// MARK: - Community Struct
+    var networks: [URL]? {
+        guard let urls = self.urls else { return nil }
+        return urls.reduce([URL]()) { current, next in
+            current + [self.getURL(next)!]
+        }
+    }
 
-struct Community: Codable {
-    let want: Int?
-    let have: Int?
+    var discogsResourceURL: URL? {
+        guard let url = self.resourceUrl else { return nil }
+        return getURL(url)
+    }
+
+    var discogsReleasesURL: URL? {
+        guard let url = self.releasesUrl else { return nil }
+        return getURL(url)
+    }
 }

@@ -1,0 +1,144 @@
+{
+  "releases" : [
+    {
+      "id" : 30835803,
+      "thumb" : "https:\/\/i.discogs.com\/wfLvmAj3er8_Zdg-jJnmdzC-XxtMQZ04h6kuIZKIE-8\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9SLTMwODM1\/ODAzLTE3MjUwMzkz\/NzgtNzU1OC5qcGVn.jpeg",
+      "label" : "Not On Label (Underoath Self-released)",
+      "stats" : {
+        "community" : {
+          "in_collection" : 1,
+          "in_wantlist" : 87
+        },
+        "user" : {
+          "in_collection" : 0,
+          "in_wantlist" : 0
+        }
+      },
+      "type" : "release",
+      "title" : "A Love So Pure",
+      "format" : "CDr, Album",
+      "resource_url" : "https:\/\/api.discogs.com\/releases\/30835803",
+      "role" : "Main",
+      "year" : 1998,
+      "artist" : "Underoath",
+      "status" : "Accepted"
+    },
+    {
+      "artist" : "Underoath",
+      "id" : 636549,
+      "main_release" : 859593,
+      "title" : "Act Of Depression",
+      "role" : "Main",
+      "thumb" : "https:\/\/i.discogs.com\/ZbwmfsSvS52L8KVgsWzeNsqz7o4Spk2ye0U-pHqoTHg\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9SLTg1OTU5\/My0xNDQ1NTYxMDc0\/LTE5MjguanBlZw.jpeg",
+      "year" : 1999,
+      "type" : "master",
+      "resource_url" : "https:\/\/api.discogs.com\/masters\/636549",
+      "stats" : {
+        "community" : {
+          "in_collection" : 223,
+          "in_wantlist" : 402
+        },
+        "user" : {
+          "in_collection" : 0,
+          "in_wantlist" : 0
+        }
+      }
+    },
+    {
+      "artist" : "Underoath",
+      "id" : 636550,
+      "main_release" : 859590,
+      "title" : "Cries Of The Past",
+      "role" : "Main",
+      "thumb" : "https:\/\/i.discogs.com\/hrnUbv9YZd45H8Z4YOgY_-2t4tedO00Zysnakdff2c0\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9SLTg1OTU5\/MC0xNDQ1NTYyMTc1\/LTUzMTkuanBlZw.jpeg",
+      "year" : 2000,
+      "type" : "master",
+      "resource_url" : "https:\/\/api.discogs.com\/masters\/636550",
+      "stats" : {
+        "community" : {
+          "in_collection" : 275,
+          "in_wantlist" : 421
+        },
+        "user" : {
+          "in_collection" : 0,
+          "in_wantlist" : 0
+        }
+      }
+    },
+    {
+      "artist" : "Underoath",
+      "id" : 161232,
+      "main_release" : 859596,
+      "title" : "The Changing Of Times",
+      "role" : "Main",
+      "thumb" : "https:\/\/i.discogs.com\/z0BNL9XVSi6ZQY9ex11ZW_VperhWAYErsspqg1V56BQ\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9SLTg1OTU5\/Ni0xMjk2NzM1ODEy\/LmpwZWc.jpeg",
+      "year" : 2002,
+      "type" : "master",
+      "resource_url" : "https:\/\/api.discogs.com\/masters\/161232",
+      "stats" : {
+        "community" : {
+          "in_collection" : 982,
+          "in_wantlist" : 296
+        },
+        "user" : {
+          "in_collection" : 0,
+          "in_wantlist" : 0
+        }
+      }
+    },
+    {
+      "id" : 15853378,
+      "thumb" : "https:\/\/i.discogs.com\/LSZYcKgYxVo58nBmTWeYpMQ1Bs2eMKtf3rbaGPyUm5U\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9SLTE1ODUz\/Mzc4LTE2MDI1MDc5\/NDYtNjU1NC5qcGVn.jpeg",
+      "label" : "Not On Label",
+      "stats" : {
+        "community" : {
+          "in_collection" : 3,
+          "in_wantlist" : 55
+        },
+        "user" : {
+          "in_collection" : 0,
+          "in_wantlist" : 0
+        }
+      },
+      "type" : "release",
+      "title" : "SDII",
+      "format" : "CDr",
+      "resource_url" : "https:\/\/api.discogs.com\/releases\/15853378",
+      "role" : "Main",
+      "year" : 2003,
+      "artist" : "Underoath",
+      "status" : "Accepted"
+    },
+    {
+      "artist" : "Underoath",
+      "id" : 3831102,
+      "main_release" : 10329419,
+      "title" : "Reinventing Your Exit",
+      "role" : "Main",
+      "thumb" : "https:\/\/i.discogs.com\/AO8q1Osi8gG_BxjHxbw-cNPgWJGnsONtHe6zo5rwtz0\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9SLTEwMzI5\/NDE5LTE0OTU0MjQw\/OTEtOTM3NS5qcGVn.jpeg",
+      "year" : 2004,
+      "type" : "master",
+      "resource_url" : "https:\/\/api.discogs.com\/masters\/3831102",
+      "stats" : {
+        "community" : {
+          "in_collection" : 6,
+          "in_wantlist" : 49
+        },
+        "user" : {
+          "in_collection" : 0,
+          "in_wantlist" : 0
+        }
+      }
+    }
+  ],
+  "pagination" : {
+    "pages" : 8,
+    "per_page" : 6,
+    "items" : 219,
+    "urls" : {
+      "last" : "https:\/\/api.discogs.com\/artists\/326404\/releases?sort_order=asc&page=8&sort=year&per_page=30",
+      "next" : "https:\/\/api.discogs.com\/artists\/326404\/releases?sort_order=asc&page=2&sort=year&per_page=30"
+    },
+    "page" : 1
+  }
+}

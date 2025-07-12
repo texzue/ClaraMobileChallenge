@@ -1,0 +1,79 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Artist Details" : {
+
+    },
+    "Artist ID" : {
+
+    },
+    "Artist Name" : {
+
+    },
+    "Autenticate" : {
+
+    },
+    "Clara Mobile Challenge" : {
+
+    },
+    "label_action_share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartir"
+          }
+        }
+      }
+    },
+    "label_information_not_available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N/A"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "N/A"
+          }
+        }
+      }
+    },
+    "Login" : {
+
+    },
+    "Release Details" : {
+
+    },
+    "Release ID" : {
+
+    },
+    "Search" : {
+
+    },
+    "Search Artist" : {
+
+    },
+    "Search By Artist Name" : {
+
+    },
+    "Search Releases" : {
+
+    },
+    "SearcherView" : {
+
+    }
+  },
+  "version" : "1.0"
+}

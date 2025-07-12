@@ -1,0 +1,75 @@
+{
+ "results" : [
+   {
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/326404",
+     "id" : 326404,
+     "title" : "Underoath",
+     "master_id" : null,
+     "master_url" : null,
+     "thumb" : "https:\/\/i.discogs.com\/IVbCYvWoTlB58qeAuRKqFAo2WdpnK-xrScA5LDaZvRk\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjQyMTk2NDI5\/LTg5NTEucG5n.jpeg",
+     "type" : "artist",
+     "user_data" : {
+       "in_collection" : false,
+       "in_wantlist" : false
+     },
+     "uri" : "\/artist\/326404-Underoath",
+     "country" : "Canada",
+     "cover_image" : "https:\/\/i.discogs.com\/PVq4w3oEGUaFj6GmALtuqjB8HIKC4aNyU2jY64Sy2Ns\/rs:fit\/g:sm\/q:90\/h:757\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjQyMTk2NDI5\/LTg5NTEucG5n.jpeg"
+   },
+   {
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/414580",
+     "id" : 414580,
+     "title" : "James Smith (5)",
+     "master_id" : null,
+     "master_url" : null,
+     "thumb" : "https:\/\/i.discogs.com\/HufshO-66a8S-w0nFtDjmNTyBzIqW_QtktsEObY5a5k\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU4\/MC0xNTc3NjkxODAy\/LTM2NzguanBlZw.jpeg",
+     "type" : "artist",
+     "user_data" : {
+       "in_collection" : false,
+       "in_wantlist" : false
+     },
+     "uri" : "\/artist\/414580-James-Smith-5",
+     "cover_image" : "https:\/\/i.discogs.com\/hJdp-ph00pl94Z0NajKHCrMG-kQ8svQ7TtGMd1gA3xI\/rs:fit\/g:sm\/q:90\/h:451\/w:371\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU4\/MC0xNTc3NjkxODAy\/LTM2NzguanBlZw.jpeg"
+   },
+   {
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/1621418",
+     "id" : 1621418,
+     "title" : "Chris Dudley",
+     "master_id" : null,
+     "master_url" : null,
+     "thumb" : "https:\/\/i.discogs.com\/5vY1aKSEFq0hqEKv3Qp7mEzSxSnyvmValaGWboGF7QA\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTE2MjE0\/MTgtMTcwOTcyNDQ1\/Mi04MTc2LmpwZWc.jpeg",
+     "type" : "artist",
+     "user_data" : {
+       "in_collection" : false,
+       "in_wantlist" : false
+     },
+     "uri" : "\/artist\/1621418-Chris-Dudley",
+     "cover_image" : "https:\/\/i.discogs.com\/KOJEG5ZmOistq76y0hOJJ-dpNGwJBLMimJ1-JfSK5ng\/rs:fit\/g:sm\/q:90\/h:210\/w:190\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTE2MjE0\/MTgtMTcwOTcyNDQ1\/Mi04MTc2LmpwZWc.jpeg"
+   },
+   {
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/14834218",
+     "id" : 14834218,
+     "title" : "Nate Young (9)",
+     "master_id" : null,
+     "master_url" : null,
+     "thumb" : "",
+     "type" : "artist",
+     "user_data" : {
+       "in_collection" : false,
+       "in_wantlist" : false
+     },
+     "uri" : "\/artist\/14834218-Nate-Young-9",
+     "cover_image" : "https:\/\/st.discogs.com\/2da32754972b9395323cec227bc3cde83202a1e2\/images\/spacer.gif"
+   }
+ ],
+ "pagination" : {
+   "pages" : 1,
+   "per_page" : 30,
+   "items" : 4,
+   "urls": {
+       "last": "http://api.discogs.com/database/search?per_page=3&artist=nirvana&release_title=nevermind&page=66",
+       "next": "http://api.discogs.com/database/search?per_page=3&artist=nirvana&release_title=nevermind&page=2"
+   },
+   "page" : 1
+ }
+}

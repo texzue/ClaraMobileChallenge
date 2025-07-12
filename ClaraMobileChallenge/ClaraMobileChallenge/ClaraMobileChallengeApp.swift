@@ -1,5 +1,5 @@
 //  ClaraMobileChallenge
-//  Created by ETS on 10/07/25.
+//  Created by Emmanuel Texis
 
 import SwiftUI
 import OAuthSwift
@@ -7,15 +7,22 @@ import OAuthSwift
 @main
 struct ClaraMobileChallengeApp: App {
 
+    @StateObject private var vmAuthentication = AuthenticationViewModel(oauthService: OauthAuthenticator.shared)
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView(
+//                artistInteractor: ConcreteArtistInteractor(networkInteractor: networkInteractor),
+//                releaseInteractor: ConcreteReleasesInteractor(networkInteractor: networkInteractor)
+//            )
+
+            AuthenticationView()
+                .environmentObject(vmAuthentication)
                 .onOpenURL(perform: handleURL)
         }
-        
     }
-    
-    func handleURL(_ url: URL) {
+
+    private func handleURL(_ url: URL) {
         switch url.host {
         case "oauth-callback":
             OAuthSwift.handle(url: url)

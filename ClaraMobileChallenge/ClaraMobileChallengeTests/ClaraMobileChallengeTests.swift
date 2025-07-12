@@ -1,5 +1,5 @@
 //  ClaraMobileChallenge
-//  Created by ETS on 10/07/25.
+//  Created by Emmanuel Texis
 
 import XCTest
 @testable import ClaraMobileChallenge

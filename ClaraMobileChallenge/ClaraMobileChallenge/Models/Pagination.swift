@@ -1,26 +1,34 @@
 //  ClaraMobileChallenge
-//  Created by ETS on 10/07/25.
+//  Created by Emmanuel Texis
 
 import Foundation
 
-
 struct Pagination: Codable {
-    let page: Int
-    let pages: Int
-    let perPage: Int
-    let items: Int
-    let urls: PaginationURLs
-
-    enum CodingKeys: String, CodingKey {
-        case page, pages, items, urls
-        case perPage = "per_page"
-    }
+    let page: Int?
+    let pages: Int?
+    let perPage: Int?
+    let items: Int?
+    let urls: PaginationURLs?
 }
 
-
-// MARK: - Pagination URLs Struct
-
 struct PaginationURLs: Codable {
-    let last: String?
-    let next: String?
+    private let last: String?
+    private let next: String?
+}
+
+extension PaginationURLs {
+    private func getURL(_ uri: String) -> URL? {
+        let pictureURL = uri.replacingOccurrences(of: "\"", with: "")
+        return URL(string: pictureURL)
+    }
+
+    var lastURL: URL? {
+        guard let url = last else { return nil }
+        return getURL(url)
+    }
+
+    var nextURL: URL? {
+        guard let url = next else { return nil }
+        return getURL(url)
+    }
 }

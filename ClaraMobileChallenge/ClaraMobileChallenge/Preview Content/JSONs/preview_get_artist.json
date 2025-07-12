@@ -1,0 +1,130 @@
+{
+ "images" : [
+   {
+     "height" : 757,
+     "uri150" : "https:\/\/i.discogs.com\/IVbCYvWoTlB58qeAuRKqFAo2WdpnK-xrScA5LDaZvRk\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjQyMTk2NDI5\/LTg5NTEucG5n.jpeg",
+     "resource_url" : "https:\/\/i.discogs.com\/PVq4w3oEGUaFj6GmALtuqjB8HIKC4aNyU2jY64Sy2Ns\/rs:fit\/g:sm\/q:90\/h:757\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjQyMTk2NDI5\/LTg5NTEucG5n.jpeg",
+     "type" : "primary",
+     "uri" : "https:\/\/i.discogs.com\/PVq4w3oEGUaFj6GmALtuqjB8HIKC4aNyU2jY64Sy2Ns\/rs:fit\/g:sm\/q:90\/h:757\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjQyMTk2NDI5\/LTg5NTEucG5n.jpeg",
+     "width" : 600
+   },
+   {
+     "height" : 550,
+     "uri150" : "https:\/\/i.discogs.com\/RcNwXyeifqVZY4LfAEGUIZsP5UopdCpLVFTZrn8fjZA\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNTM5MzE2NzMw\/LTg5MDEucG5n.jpeg",
+     "resource_url" : "https:\/\/i.discogs.com\/RHZ99lR3AjZMCVTebLxzvbwefgEZNZNKnyd6H1b_u_U\/rs:fit\/g:sm\/q:90\/h:550\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNTM5MzE2NzMw\/LTg5MDEucG5n.jpeg",
+     "type" : "secondary",
+     "uri" : "https:\/\/i.discogs.com\/RHZ99lR3AjZMCVTebLxzvbwefgEZNZNKnyd6H1b_u_U\/rs:fit\/g:sm\/q:90\/h:550\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNTM5MzE2NzMw\/LTg5MDEucG5n.jpeg",
+     "width" : 600
+   },
+   {
+     "height" : 432,
+     "uri150" : "https:\/\/i.discogs.com\/Nmj49Ajk4Mrh6TDhdSl27CbF-yKfz8rkP87G4xeMKjg\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjE1NDg3Mzc1\/LTg5MTYuanBlZw.jpeg",
+     "resource_url" : "https:\/\/i.discogs.com\/OO1-PqLKPpqQzUVvFedJBLeDK072ke_A577X3vSv-po\/rs:fit\/g:sm\/q:90\/h:432\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjE1NDg3Mzc1\/LTg5MTYuanBlZw.jpeg",
+     "type" : "secondary",
+     "uri" : "https:\/\/i.discogs.com\/OO1-PqLKPpqQzUVvFedJBLeDK072ke_A577X3vSv-po\/rs:fit\/g:sm\/q:90\/h:432\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNjE1NDg3Mzc1\/LTg5MTYuanBlZw.jpeg",
+     "width" : 600
+   },
+   {
+     "height" : 400,
+     "uri150" : "https:\/\/i.discogs.com\/y9XnZutIOc3kcwX_DQxDNBSbEB66GCqqqBPDF_1sW50\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xMTQ1Njc3NDEw\/LmpwZWc.jpeg",
+     "resource_url" : "https:\/\/i.discogs.com\/ffUUf2-t6wLnCGXfuDS4LdUfWJWwjhuHbxLCP8zxHY0\/rs:fit\/g:sm\/q:90\/h:400\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xMTQ1Njc3NDEw\/LmpwZWc.jpeg",
+     "type" : "secondary",
+     "uri" : "https:\/\/i.discogs.com\/ffUUf2-t6wLnCGXfuDS4LdUfWJWwjhuHbxLCP8zxHY0\/rs:fit\/g:sm\/q:90\/h:400\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xMTQ1Njc3NDEw\/LmpwZWc.jpeg",
+     "width" : 600
+   },
+   {
+     "height" : 302,
+     "uri150" : "https:\/\/i.discogs.com\/j-G1_WrIpJ8pLsguCI2OoWLEVLMfg6jIMcLpfBEKnuw\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xMTE4NDYyNDYz\/LmpwZw.jpeg",
+     "resource_url" : "https:\/\/i.discogs.com\/QAiLx309Ihe5ju51w__bCaLmWEU7PH_aXD2c3BvMAYg\/rs:fit\/g:sm\/q:90\/h:302\/w:375\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xMTE4NDYyNDYz\/LmpwZw.jpeg",
+     "type" : "secondary",
+     "uri" : "https:\/\/i.discogs.com\/QAiLx309Ihe5ju51w__bCaLmWEU7PH_aXD2c3BvMAYg\/rs:fit\/g:sm\/q:90\/h:302\/w:375\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xMTE4NDYyNDYz\/LmpwZw.jpeg",
+     "width" : 375
+   },
+   {
+     "height" : 186,
+     "uri150" : "https:\/\/i.discogs.com\/D0um7s9Irvs6kPyiPO33ink1ZCYTrXExD-yozpl_Wxg\/rs:fit\/g:sm\/q:40\/h:150\/w:150\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNTk4NTU0MDE1\/LTYwNTcuanBlZw.jpeg",
+     "resource_url" : "https:\/\/i.discogs.com\/N_zshUiTY3A7mFnm-Sqma_KmO_7K3oMKZRAyIU7P2L0\/rs:fit\/g:sm\/q:90\/h:186\/w:207\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNTk4NTU0MDE1\/LTYwNTcuanBlZw.jpeg",
+     "type" : "secondary",
+     "uri" : "https:\/\/i.discogs.com\/N_zshUiTY3A7mFnm-Sqma_KmO_7K3oMKZRAyIU7P2L0\/rs:fit\/g:sm\/q:90\/h:186\/w:207\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTMyNjQw\/NC0xNTk4NTU0MDE1\/LTYwNTcuanBlZw.jpeg",
+     "width" : 207
+   }
+ ],
+ "urls" : [
+   "http:\/\/www.underoath777.com",
+   "https:\/\/open.spotify.com\/artist\/3GzWhE2xadJiW8MqRKIVSK",
+   "https:\/\/www.youtube.com\/user\/underoathmusic",
+   "https:\/\/www.deezer.com\/en\/artist\/4338",
+   "https:\/\/www.facebook.com\/underoath",
+   "https:\/\/twitter.com\/underoathband",
+   "https:\/\/en.wikipedia.org\/wiki\/Underoath",
+   "https:\/\/myspace.com\/underoath"
+ ],
+ "releases_url" : "https:\/\/api.discogs.com\/artists\/326404\/releases",
+ "id" : 326404,
+ "namevariations" : [
+   "Underøath"
+ ],
+ "members" : [
+   {
+     "id" : 412780,
+     "active" : true,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/412780",
+     "name" : "Aaron Gillespie",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/OLcRGvxmipWLaClByeOs43boeKUX25H7wTfgBmX1fjg\/rs:fit\/g:sm\/q:40\/h:398\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxMjc4\/MC0xNDQ2NTY2Njk4\/LTQ0NTMucG5n.jpeg"
+   },
+   {
+     "id" : 414576,
+     "active" : true,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/414576",
+     "name" : "Timothy McTague",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/WwF6rSP6_M4XqH83XjVi0DGiGHk86SB7_Yc_odXMKFQ\/rs:fit\/g:sm\/q:40\/h:607\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU3\/Ni0xNjUwMDk3Mjgz\/LTgxMjcuanBlZw.jpeg"
+   },
+   {
+     "id" : 414577,
+     "active" : true,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/414577",
+     "name" : "Grant Brandell",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/vQ322K5xenr1QNsDg1nSqg2yhrQ8X262zS5IrIJ1K2Y\/rs:fit\/g:sm\/q:40\/h:400\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU3\/Ny0xNjY2MTUxNzky\/LTQ4ODYuanBlZw.jpeg"
+   },
+   {
+     "id" : 414578,
+     "active" : true,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/414578",
+     "name" : "Christopher Dudley",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/1eE6bj3qSyMRe0xBGIB0rRI22a6VF0KgzKQoJJgHt20\/rs:fit\/g:sm\/q:40\/h:356\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU3\/OC0xNjQyMTk2ODc3\/LTEyODMuanBlZw.jpeg"
+   },
+   {
+     "id" : 414579,
+     "active" : true,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/414579",
+     "name" : "Spencer Chamberlain",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/lHA-Rcclx_Z8Np1n13xjXMKiQ7XYiIcNBKWmyQ9idAY\/rs:fit\/g:sm\/q:40\/h:902\/w:600\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU3\/OS0xNTYzNjMyODcz\/LTg0MDMuanBlZw.jpeg"
+   },
+   {
+     "id" : 414580,
+     "active" : false,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/414580",
+     "name" : "James Smith (5)",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/bdJXH7fWZAFRhy2zhWwUvaLC2yrNfoi3oijxp78Ohmo\/rs:fit\/g:sm\/q:40\/h:451\/w:371\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTQxNDU4\/MC0xNTc3NjkxODAy\/LTM2NzguanBlZw.jpeg"
+   },
+   {
+     "id" : 719930,
+     "active" : false,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/719930",
+     "name" : "Octavio Fernandez",
+     "thumbnail_url" : ""
+   },
+   {
+     "id" : 720945,
+     "active" : false,
+     "resource_url" : "https:\/\/api.discogs.com\/artists\/720945",
+     "name" : "Daniel Davison",
+     "thumbnail_url" : "https:\/\/i.discogs.com\/JiLyVN5vlJJ5o0h2Mx-D18jmwVK4qVV2iZXy8zsfU6w\/rs:fit\/g:sm\/q:40\/h:570\/w:369\/czM6Ly9kaXNjb2dz\/LWRhdGFiYXNlLWlt\/YWdlcy9BLTcyMDk0\/NS0xMzIzODU5ODE4\/LmpwZWc.jpeg"
+   }
+ ],
+ "data_quality" : "Needs Vote",
+ "resource_url" : "https:\/\/api.discogs.com\/artists\/326404",
+ "profile" : "Underoath is a post-hardcore band from Tampa, Florida, formed in november 1997. They broke up in january 2013 but reformed in 2015.\r\n\r\nTheir first albums featured a hardcore\/metal sound with strong death\/black metal influences. They rose to fame with \"They're Only Chasing Safety\" (2004), moving into emo-pop territory and consolidating their current line-up, of which only drummer\/vocalist Aaron Gillespie remains. To date, the band has released ten studio albums, experimenting with varied influences as industrial, electronic, groove, ambient, and post-metal.\r\n\r\nThe band was frequently referred to as a Christian band, and while some are Christians, they have publicly distanced  from that label, expressed in their album \"Erase Me\" (2018).",
+ "name" : "Underoath",
+ "uri" : "https:\/\/www.discogs.com\/artist\/326404-Underoath"
+}
