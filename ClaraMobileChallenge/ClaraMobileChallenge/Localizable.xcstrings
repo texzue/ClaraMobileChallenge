@@ -13,7 +13,13 @@
     "Autenticate" : {
 
     },
-    "Clara Mobile Challenge" : {
+    "Check spelling or try a new search" : {
+
+    },
+    "Covers" : {
+
+    },
+    "Discogs" : {
 
     },
     "label_action_share" : {
@@ -53,6 +59,15 @@
     "Login" : {
 
     },
+    "No results" : {
+
+    },
+    "No results for %@" : {
+
+    },
+    "Please log in with your credentials to start browsing the discography" : {
+
+    },
     "Release Details" : {
 
     },
@@ -71,7 +86,10 @@
     "Search Releases" : {
 
     },
-    "SearcherView" : {
+    "Try a new search" : {
+
+    },
+    "Type an artist name..." : {
 
     }
   },

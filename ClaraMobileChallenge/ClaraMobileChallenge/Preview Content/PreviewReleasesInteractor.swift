@@ -14,17 +14,10 @@ final class PreviewReleasesInteractor: ReleasesInteractor {
     }
 
     func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetails, NetworkError> {
-        let data: ReleaseDetails = try loadDataFromFile(from: "preview_get_release_details")
+        let data: ReleaseDetails = try BundleFileManager.loadDataFromFile(from: "preview_get_release_details")
 
         return returnErrorEnabled
         ? .failure(networkErrorToReturn)
         : .success(data)
-    }
-
-    private func loadDataFromFile<DTO: Decodable>(from fileName: String) throws -> DTO {
-        let url = Bundle.main.url(forResource: fileName, withExtension: "json")!
-
-        let data = try Data(contentsOf: url)
-        return try JSONDecoder().decode(DTO.self, from: data)
     }
 }

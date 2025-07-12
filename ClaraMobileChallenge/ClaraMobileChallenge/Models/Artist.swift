@@ -10,6 +10,7 @@ struct Artist: Codable, Identifiable {
     let images: [ArtistImage]?
     let members: [Member]?
     let message: String?
+    let name: String?
     let namevariations: [String]?
     let profile: String? // Band description
     private let releasesUrl: String?
@@ -26,7 +27,7 @@ extension Artist {
         let resourceUrl: String?
     }
 
-    struct ArtistImage: Codable {
+    struct ArtistImage: Codable, Hashable {
         let height: Int?
         let resourceURL: String?
         let type: String?
@@ -68,5 +69,11 @@ extension Artist {
     var discogsReleasesURL: URL? {
         guard let url = self.releasesUrl else { return nil }
         return getURL(url)
+    }
+}
+
+extension Artist {
+    static var demo: Self? {
+        try? BundleFileManager.loadDataFromFile(from: "preview_get_artist")
     }
 }

@@ -8,6 +8,8 @@ import OAuthSwift
 struct ClaraMobileChallengeApp: App {
 
     @StateObject private var vmAuthentication = AuthenticationViewModel(oauthService: OauthAuthenticator.shared)
+    @StateObject private var vmSearchContent = SearchContentViewModel(artistInteractor: ConcreteArtistInteractor(networkInteractor: ConcreteNetworkInteractor()),
+                                                                      imageInteractor: ConcreteImageInteractor())
 
     var body: some Scene {
         WindowGroup {
@@ -18,6 +20,7 @@ struct ClaraMobileChallengeApp: App {
 
             AuthenticationView()
                 .environmentObject(vmAuthentication)
+                .environmentObject(vmSearchContent)
                 .onOpenURL(perform: handleURL)
         }
     }

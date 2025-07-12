@@ -11,15 +11,27 @@ struct LoginView: View {
     @EnvironmentObject var authenticationViewModel: AuthenticationViewModel
 
     var body: some View {
+
+        Image(.discogs)
+            .resizable(resizingMode: .stretch)
+            .aspectRatio(contentMode: .fill)
+            .ignoresSafeArea()
+
         VStack {
-            Text("Clara Mobile Challenge")
+            Text("Discogs")
+                .customTitleStyle()
+            Text("Please log in with your credentials to start browsing the discography")
                 .customHeaderStyle()
+                .padding(.horizontal, 1.su)
+                .padding(.bottom, 2.su)
             Button(action: {
                 self.authenticationViewModel.performAction(.authenticate)
             }) {
                 Text("Login")
             }
-        }.padding(.horizontal, 1.su)
+            .buttonStyle(.borderedProminent)
+        }
+        .padding(.horizontal, 1.su)
     }
 }
 

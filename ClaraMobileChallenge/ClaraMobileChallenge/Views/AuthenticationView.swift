@@ -13,7 +13,7 @@ struct AuthenticationView: View {
 
     var body: some View {
         if authenticationViewModel.isLoggedIn {
-            SearcherView()
+            ContentSearcherView()
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .transition(.move(edge: .leading))
         } else {

@@ -16,7 +16,7 @@ extension Releases {
         let mainRelease: Int?
         private let resourceUrl: String?
         let role: String?
-        let thumb: String?
+        private let thumb: String?
         let title: String?
         let type: String? // Album Name
         let year: Int?
@@ -46,4 +46,16 @@ extension Releases.Release {
         guard let url = self.resourceUrl else { return nil }
         return getURL(url)
     }
+
+    var thumbURL: URL? {
+        guard let url = self.thumb else { return nil }
+        return getURL(url)
+    }
+}
+
+extension Releases {
+    static var demo: Self? {
+        try? BundleFileManager.loadDataFromFile(from: "preview_get_releases")
+    }
+
 }

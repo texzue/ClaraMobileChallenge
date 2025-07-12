@@ -1,180 +1,67 @@
+//
+//  SearcherView.swift
 //  ClaraMobileChallenge
-//  Created by Emmanuel Texis
+//
+//  Created by Emmanuel Texis Suárez on 12/07/25.
+//
 
 import SwiftUI
-import SwiftData
 
-struct ContentView: View {
+struct ContentSearcherView: View {
 
-    let artistInteractor: ArtistInteractor
-    let releaseInteractor: ReleasesInteractor
-    @State private var artistName: String = ""
-    @State private var artistID: String = ""
-    @State private var releaseID: String = ""
+    @EnvironmentObject var searchContentViewModel: SearchContentViewModel
+
+    @State var query: String = ""
 
     var body: some View {
-        
-        LazyVStack(alignment: .leading, spacing: 1.su) {
-            Button("Autenticate") {
-                authenticate()
-            }
 
-            Text("Search By Artist Name")
-                .customHeaderStyle()
-            HStack {
-                TextField("Artist Name", text: $artistName)
-                    .textFieldStyle(.roundedBorder)
-                Button("Search") {
-                    getArtist()
-                }
-            }.padding(.bottom, 1.su)
-
-            Text("Artist Details")
-                .customHeaderStyle()
+        NavigationView {
             VStack {
-                TextField("Artist ID", text: $artistID)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.telephoneNumber)
-                    .keyboardType(.phonePad)
-                HStack {
-                    Button("Search Artist") {
-                        getArtistDetails()
+                HStack(alignment: .center, spacing: 1.su) {
+                    TextField("Type an artist name...", text: $query)
+                        .textFieldStyle(.roundedBorder)
+                    Button {
+                        searchContentViewModel.performAction(.search(query))
+                    } label: {
+                        Text("Search")
                     }
-                    Spacer()
-                    Button("Search Releases") {
-                        getArtistReleasesDetails()
-                    }
+                    .padding(.leading, 1.su)
                 }
-            }.padding(.bottom, 1.su)
-
-            Text("Release Details")
-                .customHeaderStyle()
-            VStack {
-                TextField("Release ID", text: $releaseID)
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.telephoneNumber)
-                    .keyboardType(.phonePad)
-                HStack {
-                    Spacer()
-                    Button("Search") {
-                        getReleasesDetails()
+                .padding(.horizontal)
+                List(searchContentViewModel.results) { result in
+                    NavigationLink(destination: ArtistDetailsView(searchResult: result)) {
+                        ScoreCell(
+                            title: result.title.viewLabel,
+                            subtitle: result.type.viewLabel.capitalized,
+                            imageURL: result.thumbURL
+                        )
                     }
                 }
-            }.padding(.bottom, 1.su)
-
-
-        }.padding(.horizontal, 2.su)
-        
-    }
-
-    private func addItem() {
-        withAnimation {
-            authenticate()
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            authenticate()
-        }
-    }
-    
-    private func authenticate() {
-        Task {
-            do {
-                let result = try await OauthAuthenticator.shared.autenticate()
-                switch result {
-                case .success:
-                    print()
-                case .failure(let error):
-                    handleError(error)
+                .overlay {
+                    if searchContentViewModel.results.isEmpty {
+                        // Search unavailable view
+                        EmptyContentView(query: $query)
+                    }
                 }
             }
-        }
-    }
-    
-    private func getArtist() {
-        Task {
-            do {
-                let result = try await artistInteractor.searchArtist(artist: artistName, page: 1)
-                switch result {
-                case .success(let artists):
-                    print(artists)
-                case .failure(let error):
-                    handleError(error)
-                }
-            }
-        }
-    }
-
-    private func getArtistDetails() {
-        guard let artistIdAsInt = Int(artistID) else { return }
-        Task {
-            do {
-                let result = try await artistInteractor.getArtistDetails(with: artistIdAsInt)
-                switch result {
-                case .success(let artist):
-                    print(artist)
-                case .failure(let error):
-                    handleError(error)
-                }
-            }
-        }
-    }
-
-    private func getArtistReleasesDetails() {
-        guard let artistIdAsInt = Int(artistID) else { return }
-        Task {
-            do {
-                let result = try await artistInteractor.getArtistReleases(artistId: artistIdAsInt, page: 1)
-                switch result {
-                case .success(let releases):
-                    print(releases)
-                case .failure(let error):
-                    handleError(error)
-                }
-            }
-        }
-    }
-
-    private func getReleasesDetails() {
-        guard let releaseIdAsInt = Int(releaseID) else { return }
-        Task {
-            do {
-                let result = try await releaseInteractor.getReleaseDetails(with: releaseIdAsInt)
-                switch result {
-                case .success(let release):
-                    print(release)
-                case .failure(let error):
-                    handleError(error)
-                }
-            }
-        }
-    }
-
-    private func handleError(_ error: NetworkError) {
-        switch error {
-        case .invalidURL:
-            print("Invalid URL")
-        case .invalidAuthentication:
-            Task {
-                try await OauthAuthenticator.shared.autenticate()
-            }
-        case .accessDenied:
-            print("Access Denied")
-        case .dataCorrupted, .noContent:
-            print("Data Corrupted or No Content Error")
-        case let .general(error):
-            print("General Error: \(error)")
-        case .HTTPSResponseError:
-            print("HTTP Status Code Error")
         }
     }
 }
 
 #Preview {
-    ContentView(
-        artistInteractor: PreviewArtistInteractor(returnErrorEnabled: false, networkErrorToReturn: .accessDenied),
-        releaseInteractor: PreviewReleasesInteractor(returnErrorEnabled: false, networkErrorToReturn: .HTTPSResponseError)
-    )
+    ContentSearcherView()
+        .environmentObject(
+            SearchContentViewModel(
+                artistInteractor: PreviewArtistInteractor(returnErrorEnabled: false, networkErrorToReturn: .noContent),
+                imageInteractor: PreviewImageInteractor(timeOutInterval: 12))
+        )
+}
+
+
+struct ArtistDetailsView: View {
+    var searchResult: Search.Results
+
+    var body: some View {
+        Text(searchResult.title.viewLabel)
+    }
 }
