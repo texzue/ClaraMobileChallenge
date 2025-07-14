@@ -27,14 +27,14 @@ extension ImageInteractor {
             try jpgData.write(to: localPath, options: .atomic)
             return image
         } else {
-            Debug.eval { print("Error downloading image \(path)") }
+//            Debug.eval { print("Error downloading image \(path)") }
             return nil
         }
     }
 
     func getLocalImage(url: URL) async throws -> UIImage? {
         guard remoteImageExistAtCachePath(url) else {
-            Debug.eval { print("Image \(url.lastPathComponent) doesn't exist locally") }
+//            Debug.eval { print("Image \(url.lastPathComponent) doesn't exist locally") }
             return nil
         }
 
@@ -45,7 +45,7 @@ extension ImageInteractor {
         if let image = UIImage(contentsOfFile: localPath.path) {
             return image
         } else {
-            Debug.eval { print("Image \(localPath) doesn't exist locally") }
+//            Debug.eval { print("Image \(localPath) doesn't exist locally") }
             return nil
         }
     }

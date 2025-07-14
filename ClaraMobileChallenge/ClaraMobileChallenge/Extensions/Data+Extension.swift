@@ -20,12 +20,12 @@ extension Data {
                 if let jsonString = String(data: prettyPrintedData, encoding: .utf8) {
                     return jsonString
                 } else {
-                    print("Error: Could not convert pretty-printed Data to String using UTF-8 encoding.")
+                    Debug.eval { print("Error: Could not convert pretty-printed Data to String using UTF-8 encoding.") }
                     return nil
                 }
             } catch {
                 // Handle any errors during JSON serialization or deserialization.
-                print("Error pretty printing JSON: \(error.localizedDescription)")
+                Debug.eval { print("Error pretty printing JSON: \(error.localizedDescription)") }
                 return nil
             }
         }

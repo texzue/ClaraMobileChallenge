@@ -14,6 +14,8 @@ final class BundleFileManager {
         let url = Bundle.main.url(forResource: fileName, withExtension: "json")!
 
         let data = try Data(contentsOf: url)
-        return try JSONDecoder().decode(DTO.self, from: data)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try decoder.decode(DTO.self, from: data)
     }
 }
