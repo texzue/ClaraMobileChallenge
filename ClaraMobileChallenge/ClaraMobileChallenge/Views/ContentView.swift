@@ -24,7 +24,7 @@ struct ContentSearcherView: View {
                 List {
                     ForEach(searchContentViewModel.results) { record in
                         NavigationLink(destination: ArtistView(selectedArtist: record)) {
-                            ScoreCell(title: record.name, subtitle: record.identifier, imageURL: record.thumbnailURL)
+                            ScoreCell(title: record.name, subtitle: record.identifier, imageURL: .constant(record.thumbnailURL))
                         }
                     }
                     if !searchContentViewModel.loading && !searchContentViewModel.noMoreData {

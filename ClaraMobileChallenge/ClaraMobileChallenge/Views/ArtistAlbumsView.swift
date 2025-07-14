@@ -36,7 +36,7 @@ struct ArtistAlbumsView: View {
                             Text(item.releaseYear).customContentStyle()
                         }
                         Spacer()
-                        CustomAsynkView(url: item.thumbnail, imageInteractor: imageInteractor)
+                        CustomAsynkView(url: .constant(item.thumbnail), imageInteractor: imageInteractor)
                     }
                 }
             }
