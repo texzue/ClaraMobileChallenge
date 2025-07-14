@@ -13,10 +13,13 @@ final class SearchContentViewModel: ObservableObject {
     private let artistInteractor: ArtistInteractor
     private let imageInteractor: ImageInteractor
 
-    private var currentPage = 1
-    private var lastQuery = ""
+    // MARK: Pagination
+    private var recordsNextPage = 1
+    private var maxPagination = 2
+    @Published var noMoreData = false
 
     // MARK: Data
+    private var lastQuery = ""
     @Published var results: [SearchItemModel] = []
 
     // MARK: Loading Indicators
@@ -25,6 +28,7 @@ final class SearchContentViewModel: ObservableObject {
     // MARK: - Actions definition
     enum Actions {
         case search(String)
+        case loadMoreRecords
     }
 
     // MARK: - Init
@@ -55,22 +59,23 @@ final class SearchContentViewModel: ObservableObject {
                 return
             }
             await MainActor.run {
+                recordsNextPage = 1
                 self.loading = true
             }
-            let response = try await artistInteractor.searchArtist(artist: query, page: currentPage)
+            let response = try await artistInteractor.searchArtist(artist: query, page: recordsNextPage)
 
             switch response {
             case .success(let searchDetails):
                 let newRecords = (searchDetails.results ?? []).compactMap { result in
                     SearchItemModel(searchDTO: result)
                 }
-                currentPage = searchDetails.pagination?.page ?? 0
+                maxPagination = searchDetails.pagination?.pages ?? 1
                 lastQuery = query
                 getImages(from: newRecords)
 
                 await MainActor.run {
+                    recordsNextPage += 1
                     self.loading = false
-                    currentPage = searchDetails.pagination?.page ?? 0
                     results = newRecords
                 }
             case .failure(let error):
@@ -81,11 +86,58 @@ final class SearchContentViewModel: ObservableObject {
             }
         }
     }
+    
+    private func loadMoreRecords() {
+        guard recordsNextPage <= maxPagination
+        else {
+            Task {
+                await MainActor.run {
+                    noMoreData = true
+                }
+            }
+            return
+        }
+        Task {
+            await MainActor.run {
+                self.loading = true
+            }
+            let response = try await artistInteractor.searchArtist(artist: lastQuery, page: recordsNextPage)
+
+            switch response {
+            case .success(let searchDetails):
+                let newRecords = (searchDetails.results ?? []).compactMap { result in
+                    SearchItemModel(searchDTO: result)
+                }
+                recordsNextPage += 1
+                getImages(from: newRecords)
+
+                await MainActor.run {
+                    loading = false
+                    results += newRecords
+                }
+            case .failure(let error):
+                switch error {
+                case .noContent, .general:
+                    await MainActor.run {
+                        loading = false
+                        noMoreData = true
+                    }
+                default:
+                    await MainActor.run {
+                        loading = false
+                        noMoreData = true
+                    }
+                }
+            }
+        }
+    }
 
     func performAction(_ action: Actions) {
         switch action {
         case .search(let query):
             search(query)
+        case .loadMoreRecords:
+            loadMoreRecords()
         }
     }
 

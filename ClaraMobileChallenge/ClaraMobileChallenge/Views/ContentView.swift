@@ -21,9 +21,20 @@ struct ContentSearcherView: View {
 
         NavigationView {
             VStack {
-                List(searchContentViewModel.results) { record in
-                    NavigationLink(destination: ArtistView(selectedArtist: record)) {
-                        ScoreCell(title: record.name, subtitle: record.identifier, imageURL: record.thumbnailURL)
+                List {
+                    ForEach(searchContentViewModel.results) { record in
+                        NavigationLink(destination: ArtistView(selectedArtist: record)) {
+                            ScoreCell(title: record.name, subtitle: record.identifier, imageURL: record.thumbnailURL)
+                        }
+                    }
+                    if !searchContentViewModel.loading && !searchContentViewModel.noMoreData {
+                        Text("Loading ...")
+                            .customSubHeaderStyle()
+                            .onAppear { searchContentViewModel.performAction(.loadMoreRecords)
+                            }
+                    }
+                    if searchContentViewModel.noMoreData {
+                        Text("No More Artists").font(.caption2.bold())
                     }
                 }
                 .overlay {
