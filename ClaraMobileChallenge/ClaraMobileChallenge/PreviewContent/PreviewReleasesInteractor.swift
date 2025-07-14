@@ -13,8 +13,8 @@ final class PreviewReleasesInteractor: ReleasesInteractor {
         self.networkErrorToReturn = networkErrorToReturn
     }
 
-    func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetails, NetworkError> {
-        let data: ReleaseDetails = try BundleFileManager.loadDataFromFile(from: "preview_get_release_details")
+    func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetailsDTO, NetworkError> {
+        let data: ReleaseDetailsDTO = try BundleFileManager.loadDataFromFile(from: "preview_get_release_details")
 
         return returnErrorEnabled
         ? .failure(networkErrorToReturn)

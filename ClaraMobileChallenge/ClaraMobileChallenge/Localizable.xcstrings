@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Albums" : {
+
+    },
     "Artist Details" : {
 
     },
@@ -17,6 +20,9 @@
 
     },
     "Covers" : {
+
+    },
+    "Details" : {
 
     },
     "Discogs" : {
@@ -59,6 +65,12 @@
     "Login" : {
 
     },
+    "Main information" : {
+
+    },
+    "More" : {
+
+    },
     "No results" : {
 
     },
@@ -86,10 +98,16 @@
     "Search Releases" : {
 
     },
+    "Tracks" : {
+
+    },
     "Try a new search" : {
 
     },
     "Type an artist name..." : {
+
+    },
+    "View all albums" : {
 
     }
   },

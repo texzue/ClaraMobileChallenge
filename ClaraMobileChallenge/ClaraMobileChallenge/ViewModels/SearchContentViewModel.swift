@@ -8,11 +8,7 @@
 import Foundation
 import UIKit
 
-public enum SearchContentViewAction {
-    case search(String)
-}
-
-final class SearchContentViewModel: ObservableObject{
+final class SearchContentViewModel: ObservableObject {
 
     private let artistInteractor: ArtistInteractor
     private let imageInteractor: ImageInteractor
@@ -21,14 +17,15 @@ final class SearchContentViewModel: ObservableObject{
     private var lastQuery = ""
 
     // MARK: Data
-    @Published var results: [Search.Results] = []
+    @Published var results: [SearchItemModel] = []
 
     // MARK: Loading Indicators
     @Published var loading = true
 
-    // MARK: Navigation
-    @Published var presentArtistDetails = false
-    @Published var artistName: String? = nil
+    // MARK: - Actions definition
+    enum Actions {
+        case search(String)
+    }
 
     // MARK: - Init
     init(artistInteractor: ArtistInteractor, imageInteractor: ImageInteractor) {
@@ -37,47 +34,63 @@ final class SearchContentViewModel: ObservableObject{
     }
 
     // MARK: - Private Methods
-
-    private func getImages(from search: Search) async throws {
-        try await withThrowingTaskGroup(of: UIImage?.self) { imageTaskGroup in
-            search.results?.compactMap(\.thumbURL)
-                .forEach { url in
-                    imageTaskGroup.addTask {
-                        try await self.imageInteractor.getRemoteImage(url: url)
+    private func getImages(from search: [SearchItemModel]) {
+        Task {
+            try await withThrowingTaskGroup(of: UIImage?.self) { imageTaskGroup in
+                search.compactMap(\.thumbnailURL)
+                    .forEach { url in
+                        imageTaskGroup.addTask {
+                            try await self.imageInteractor.getRemoteImage(url: url)
+                        }
                     }
-                }
-
-            let asyncSequence = imageTaskGroup.compactMap { $0 }
-            for try await _ in asyncSequence { }
+                let asyncSequence = imageTaskGroup.compactMap { $0 }
+                for try await _ in asyncSequence { }
+            }
         }
     }
 
-    func performAction(_ action: SearchContentViewAction) {
+    private func search(_ query: String) {
         Task {
-            switch action {
-            case .search(let query):
-                guard lastQuery != query else {
-                    return
+            guard lastQuery != query else {
+                return
+            }
+            await MainActor.run {
+                self.loading = true
+            }
+            let response = try await artistInteractor.searchArtist(artist: query, page: currentPage)
+
+            switch response {
+            case .success(let searchDetails):
+                let newRecords = (searchDetails.results ?? []).compactMap { result in
+                    SearchItemModel(searchDTO: result)
                 }
+                currentPage = searchDetails.pagination?.page ?? 0
+                lastQuery = query
+                getImages(from: newRecords)
+
                 await MainActor.run {
-                    self.loading = true
+                    self.loading = false
+                    currentPage = searchDetails.pagination?.page ?? 0
+                    results = newRecords
                 }
-                let response = try await artistInteractor.searchArtist(artist: query, page: currentPage)
+            case .failure(let error):
                 await MainActor.run {
-                    switch response {
-                    case .success(let searchDetails):
-                        results = searchDetails.results ?? []
-                        currentPage = searchDetails.pagination?.page ?? 0
-                        Task(priority: .userInitiated) {
-                            try? await getImages(from: searchDetails)
-                        }
-                        lastQuery = query
-                    case .failure(let error):
-                        Debug.eval { print("No Data, reason: \(error)") }
-                    }
+                    Debug.eval { print("No Data, reason: \(error)") }
                     self.loading = false
                 }
             }
         }
+    }
+
+    func performAction(_ action: Actions) {
+        switch action {
+        case .search(let query):
+            search(query)
+        }
+    }
+
+
+    func getLocalImage(_ url: URL?) -> UIImage? {
+        imageInteractor.getImageLocally(url: url)
     }
 }

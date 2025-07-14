@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ScoreCell: View {
 
+    let imageInteractor: ImageInteractor = ConcreteImageInteractor()
     var title: String
     var subtitle: String
     var imageURL: URL?
+
+    init(title: String, subtitle: String, imageURL: URL? = nil) {
+        self.title = title
+        self.subtitle = subtitle
+        self.imageURL = imageURL
+    }
 
     var body: some View {
         HStack {
@@ -23,18 +30,35 @@ struct ScoreCell: View {
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            Image(systemName: "person.fill.questionmark")
-                .resizable()
-                .foregroundStyle(.labelSecondary)
-                .scaledToFit()
-                .padding(.all, 3)
-                .frame(width: 50)
+            if let image = imageInteractor.getImageLocally(url: imageURL){
+                Image(uiImage: image)
+                    .resizable()
+                    .foregroundStyle(.labelSecondary)
+                    .scaledToFill()
+                    .padding(.all, 3)
+                    .frame(width: 80, height: 80)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .accessibilityIgnoresInvertColors()
+            } else {
+                AsyncImage(url: imageURL, content: { _ in }, placeholder: {
+                    Image(systemName: "person.fill.questionmark")
+                        .resizable()
+                        .foregroundStyle(.labelSecondary)
+                        .scaledToFit()
+                        .padding(.all, 3)
+                        .frame(width: 80, height: 80)
+                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                        .accessibilityIgnoresInvertColors()
+                })
+                .scaledToFill()
+                .frame(width: 80, height: 80)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                .accessibilityIgnoresInvertColors()
+                .shadow(radius: 2)
+            }
         }
     }
 }
 
 #Preview {
-    ScoreCell(title: "Example", subtitle: "subExample", imageURL: nil)
+    ScoreCell( title: "Example", subtitle: "subExample", imageURL: URL(string: "https://foo.go"))
 }

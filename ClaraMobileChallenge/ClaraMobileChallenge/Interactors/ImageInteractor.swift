@@ -4,14 +4,15 @@
 import SwiftUI
 
 protocol ImageInteractor {
-    func getLocalImage(url: URL) async  throws -> UIImage?
-    @discardableResult func getRemoteImage(url: URL) async throws -> UIImage?
+    func getLocalImage(url: URL) async throws -> UIImage?
+    func getImageLocally(url: URL?) -> UIImage?
+    @discardableResult func getRemoteImage(url: URL?) async throws -> UIImage?
     func remoteImageExistAtCachePath(_ url: URL) -> Bool
 }
 
 extension ImageInteractor {
-    @discardableResult func getRemoteImage(url: URL) async throws -> UIImage? {
-
+    @discardableResult func getRemoteImage(url: URL?) async throws -> UIImage? {
+        guard let url else { return nil }
         guard !remoteImageExistAtCachePath(url) else {
             return try await getLocalImage(url: url)
         }
@@ -32,6 +33,26 @@ extension ImageInteractor {
     }
 
     func getLocalImage(url: URL) async throws -> UIImage? {
+        guard remoteImageExistAtCachePath(url) else {
+            Debug.eval { print("Image \(url.lastPathComponent) doesn't exist locally") }
+            return nil
+        }
+
+        var path = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.absoluteString
+        path += "\(url.lastPathComponent)"
+        let localPath = URL(string: path)!
+
+        if let image = UIImage(contentsOfFile: localPath.path) {
+            return image
+        } else {
+            Debug.eval { print("Image \(localPath) doesn't exist locally") }
+            return nil
+        }
+    }
+
+    func getImageLocally(url: URL?) -> UIImage? {
+        guard let url else { return nil }
+
         guard remoteImageExistAtCachePath(url) else {
             Debug.eval { print("Image \(url.lastPathComponent) doesn't exist locally") }
             return nil

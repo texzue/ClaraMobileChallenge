@@ -4,7 +4,7 @@
 import Foundation
 
 protocol ReleasesInteractor {
-    func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetails, NetworkError>
+    func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetailsDTO, NetworkError>
 }
 
 final class ConcreteReleasesInteractor: ReleasesInteractor {
@@ -15,7 +15,7 @@ final class ConcreteReleasesInteractor: ReleasesInteractor {
         self.networkInteractor = networkInteractor
     }
 
-    func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetails, NetworkError> {
+    func getReleaseDetails(with id: Int) async throws -> Result<ReleaseDetailsDTO, NetworkError> {
         let params: [String: Any] = [
             "curr_abbr": "MXN"
         ]
@@ -27,7 +27,7 @@ final class ConcreteReleasesInteractor: ReleasesInteractor {
         else { return .failure(.invalidURL) }
 
         do {
-            let response: ReleaseDetails = try await networkInteractor.getModelDTO(request: finalURL)
+            let response: ReleaseDetailsDTO = try await networkInteractor.getModelDTO(request: finalURL)
             return .success(response)
         } catch let error as NetworkError {
             return .failure(error)

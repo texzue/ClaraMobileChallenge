@@ -21,6 +21,10 @@ final class PreviewImageInteractor: ImageInteractor {
         return UIImage(named: "testImage")
     }
 
+    func getImageLocally(url: URL) -> UIImage? {
+        return UIImage(named: "testImage")
+    }
+
     func remoteImageExistAtCachePath(_ url: URL) -> Bool {
         return true
     }

@@ -14,8 +14,8 @@ final class ConcreteArtistInteractorTests: XCTestCase {
             XCTAssertEqual(search.pagination?.page, 1)
             XCTAssertEqual(search.pagination?.pages, 1)
             XCTAssertEqual(search.pagination?.perPage, 30)
-            XCTAssertNotNil(search.pagination?.urls.lastURL)
-            XCTAssertNotNil(search.pagination?.urls.nextURL)
+            XCTAssertNotNil(search.pagination?.urls?.last)
+            XCTAssertNotNil(search.pagination?.urls?.next)
             XCTAssertNil(search.message)
 
             let firstResult = search.results?.first
@@ -24,7 +24,6 @@ final class ConcreteArtistInteractorTests: XCTestCase {
             XCTAssertNil(firstResult?.community?.want)
             XCTAssertNil(firstResult?.community?.have)
             XCTAssertEqual(firstResult?.country, "Canada")
-            XCTAssertNotNil(firstResult?.coverImage)
             XCTAssertNil(firstResult?.masterId)
             XCTAssertNotNil(firstResult?.resourceUrl)
         } else if case let .failure(error) = result {
@@ -53,11 +52,11 @@ final class ConcreteArtistInteractorTests: XCTestCase {
             XCTAssertEqual(artist.namevariations?.count, 1)
             XCTAssertEqual(artist.namevariations?.first, "Underøath")
             XCTAssertEqual(artist.profile?.count, 740)
-            XCTAssertEqual(artist.uriURL?.absoluteString, "https://www.discogs.com/artist/326404-Underoath")
-            XCTAssertEqual(artist.networks?.count, 8)
-            XCTAssertEqual(artist.networks?.first?.absoluteString, "http://www.underoath777.com")
-            XCTAssertEqual(artist.discogsResourceURL?.absoluteString, "https://api.discogs.com/artists/326404")
-            XCTAssertEqual(artist.discogsReleasesURL?.absoluteString, "https://api.discogs.com/artists/326404/releases")
+            XCTAssertEqual(artist.uri, "https://www.discogs.com/artist/326404-Underoath")
+            XCTAssertEqual(artist.urls?.count, 8)
+            XCTAssertEqual(artist.urls?.first, "http://www.underoath777.com")
+            XCTAssertEqual(artist.resourceUrl, "https://api.discogs.com/artists/326404")
+            XCTAssertEqual(artist.releasesUrl, "https://api.discogs.com/artists/326404/releases")
         } else if case let .failure(error) = result {
             switch error {
             case .general(let specificError):
@@ -76,8 +75,8 @@ final class ConcreteArtistInteractorTests: XCTestCase {
         if case let .success(artistReleases) = result {
             XCTAssertNil(artistReleases.message)
             XCTAssertNotNil(artistReleases.pagination)
-            XCTAssertEqual(artistReleases.pagination?.urls.lastURL?.absoluteString, "https://api.discogs.com/artists/326404/releases?sort_order=asc&page=8&sort=year&per_page=30")
-            XCTAssertEqual(artistReleases.pagination?.urls.nextURL?.absoluteString, "https://api.discogs.com/artists/326404/releases?sort_order=asc&page=2&sort=year&per_page=30")
+            XCTAssertEqual(artistReleases.pagination?.urls?.last, "https://api.discogs.com/artists/326404/releases?sort_order=asc&page=8&sort=year&per_page=30")
+            XCTAssertEqual(artistReleases.pagination?.urls?.next, "https://api.discogs.com/artists/326404/releases?sort_order=asc&page=2&sort=year&per_page=30")
 
             let firstRelease = artistReleases.releases?.first
             XCTAssertEqual(artistReleases.releases?.count, 6)

@@ -3,17 +3,17 @@
 
 import Foundation
 
-struct ReleaseDetails: Codable {
+struct ReleaseDetailsDTO: Codable {
     let title: String?
-    let id: Int?
+    let id: Int
     let artists: [Artist]?
     let dataQuality: String?
     let thumb: String? // thumb
     let community: Community?
     let companies: [Company]?
     let country: String?
-    private let dateAdded: String? // 2004-04-30T08:10:05-07:00
-    private let dateChanged: String? // 2004-04-30T08:10:05-07:00
+    let dateAdded: String? // 2004-04-30T08:10:05-07:00
+    let dateChanged: String? // 2004-04-30T08:10:05-07:00
     let estimatedWeight: Int?
     let extraartists: [ExtraArtist]?
     let formatQuantity: Int?
@@ -39,24 +39,7 @@ struct ReleaseDetails: Codable {
     let year: Int?
 }
 
-extension ReleaseDetails {
-    var lastDateAdded: Date? {
-        guard let dateAdded else { return nil }
-        return date(from: dateAdded)
-    }
-
-    var lastDateChanged: Date? {
-        guard let dateChanged else { return nil }
-        return date(from: dateChanged)
-    }
-
-    private func date(from iso8601String: String) -> Date? {
-        let formatter = ISO8601DateFormatter()
-        return formatter.date(from: iso8601String)
-    }
-}
-
-extension ReleaseDetails {
+extension ReleaseDetailsDTO {
     struct Artist: Codable {
         let anv: String?
         let id: Int?
@@ -152,5 +135,11 @@ extension ReleaseDetails {
         let embed: Bool?
         let title: String?
         let uri: String? // URL
+    }
+}
+
+extension ReleaseDetailsDTO {
+    static var test: Self? {
+        try? BundleFileManager.loadDataFromFile(from: "preview_get_release_details")
     }
 }

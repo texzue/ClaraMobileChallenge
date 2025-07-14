@@ -3,20 +3,20 @@
 
 import Foundation
 
-struct Releases: Codable {
-    let pagination: Pagination?
+struct ReleasesDTO: Codable {
+    let pagination: PaginationDTO?
     let releases: [Release]?
     let message: String?
 }
 
-extension Releases {
+extension ReleasesDTO {
     struct Release: Codable, Identifiable {
         let artist: String?
         let id: Int
         let mainRelease: Int?
-        private let resourceUrl: String?
+        let resourceUrl: String?
         let role: String?
-        private let thumb: String?
+        let thumb: String?
         let title: String?
         let type: String? // Album Name
         let year: Int?
@@ -36,26 +36,8 @@ extension Releases {
     }
 }
 
-extension Releases.Release {
-    private func getURL(_ uri: String) -> URL? {
-        let pictureURL = uri.replacingOccurrences(of: "\"", with: "")
-        return URL(string: pictureURL)
-    }
-
-    var resource: URL? {
-        guard let url = self.resourceUrl else { return nil }
-        return getURL(url)
-    }
-
-    var thumbURL: URL? {
-        guard let url = self.thumb else { return nil }
-        return getURL(url)
-    }
-}
-
-extension Releases {
-    static var demo: Self? {
+extension ReleasesDTO {
+    static var test: Self? {
         try? BundleFileManager.loadDataFromFile(from: "preview_get_releases")
     }
-
 }

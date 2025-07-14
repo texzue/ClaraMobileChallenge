@@ -9,7 +9,6 @@ fileprivate struct TitleLabel: ViewModifier {
             .font(.title.weight(.heavy).monospaced())
             .foregroundStyle(.labelPrimary)
             .minimumScaleFactor(0.5.su)
-            .multilineTextAlignment(.center)
     }
 }
 
@@ -19,8 +18,6 @@ fileprivate struct BoldHeaderLabel: ViewModifier {
             .font(.headline.weight(.bold).monospaced())
             .foregroundStyle(.labelPrimary)
             .minimumScaleFactor(0.5)
-            .multilineTextAlignment(.center)
-            .multilineTextAlignment(.center)
     }
 }
 
@@ -30,7 +27,6 @@ fileprivate struct HeaderLabel: ViewModifier {
             .font(.headline.weight(.semibold).monospaced())
             .foregroundStyle(.labelPrimary)
             .minimumScaleFactor(0.5)
-            .multilineTextAlignment(.center)
     }
 }
 
@@ -41,14 +37,13 @@ fileprivate struct SubHeaderLabel: ViewModifier {
             .font(.headline.weight(.semibold).monospaced())
             .foregroundStyle(.labelSecondary)
             .minimumScaleFactor(0.5)
-            .multilineTextAlignment(.center)
     }
 }
 
 fileprivate struct DefaultLabel: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.body.weight(.regular))
+            .font(.footnote.weight(.regular).monospaced())
             .foregroundStyle(.labelPrimary)
             .minimumScaleFactor(0.5)
     }

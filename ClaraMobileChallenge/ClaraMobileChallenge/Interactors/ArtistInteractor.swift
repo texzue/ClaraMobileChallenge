@@ -4,9 +4,9 @@
 import Foundation
 
 protocol ArtistInteractor {
-    func searchArtist(artist: String, page: Int) async throws -> Result<Search, NetworkError>
-    func getArtistDetails(with id: Int) async throws -> Result<Artist, NetworkError>
-    func getArtistReleases(artistId: Int, page: Int) async throws -> Result<Releases, NetworkError>
+    func searchArtist(artist: String, page: Int) async throws -> Result<SearchDTO, NetworkError>
+    func getArtistDetails(with id: Int) async throws -> Result<ArtistDTO, NetworkError>
+    func getArtistReleases(artistId: Int, page: Int) async throws -> Result<ReleasesDTO, NetworkError>
 }
 
 final class ConcreteArtistInteractor: ArtistInteractor {
@@ -17,7 +17,7 @@ final class ConcreteArtistInteractor: ArtistInteractor {
         self.networkInteractor = networkInteractor
     }
 
-    func searchArtist(artist: String, page: Int) async throws -> Result<Search, NetworkError> {
+    func searchArtist(artist: String, page: Int) async throws -> Result<SearchDTO, NetworkError> {
         let params: [String: Any] = [
             "q": artist,
             "type": "artist",
@@ -36,7 +36,7 @@ final class ConcreteArtistInteractor: ArtistInteractor {
         }
 
         do {
-            let response: Search = try await networkInteractor.getModelDTO(request: finalURL)
+            let response: SearchDTO = try await networkInteractor.getModelDTO(request: finalURL)
             return .success(response)
         } catch let error as NetworkError {
             return .failure(error)
@@ -45,14 +45,14 @@ final class ConcreteArtistInteractor: ArtistInteractor {
         }
     }
     
-    func getArtistDetails(with id: Int) async throws -> Result<Artist, NetworkError> {
+    func getArtistDetails(with id: Int) async throws -> Result<ArtistDTO, NetworkError> {
         guard let artistCallbackURL = URL(string: "https://api.discogs.com/artists/\(id)")
         else {
             return .failure(.invalidURL)
         }
 
         do {
-            let response: Artist = try await networkInteractor.getModelDTO(request: artistCallbackURL)
+            let response: ArtistDTO = try await networkInteractor.getModelDTO(request: artistCallbackURL)
             return .success(response)
         } catch let error as NetworkError {
             return .failure(error)
@@ -61,10 +61,10 @@ final class ConcreteArtistInteractor: ArtistInteractor {
         }
     }
 
-    func getArtistReleases(artistId: Int, page: Int) async throws -> Result<Releases, NetworkError> {
+    func getArtistReleases(artistId: Int, page: Int) async throws -> Result<ReleasesDTO, NetworkError> {
         let params: [String: Any] = [
             "sort": "year", // year, title, format
-            "sort_order": "asc",
+            "sort_order": "desc",
             "page": page,
             "per_page": NetworkingConstant.PaginationSize
         ]
@@ -80,7 +80,7 @@ final class ConcreteArtistInteractor: ArtistInteractor {
         }
 
         do {
-            let response: Releases = try await networkInteractor.getModelDTO(request: finalURL)
+            let response: ReleasesDTO = try await networkInteractor.getModelDTO(request: finalURL)
             return .success(response)
         } catch let error as NetworkError {
             return .failure(error)

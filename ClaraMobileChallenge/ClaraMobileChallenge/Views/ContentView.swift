@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentSearcherView: View {
 
     @EnvironmentObject var searchContentViewModel: SearchContentViewModel
-
     @State var query: String = ""
 
     var body: some View {
@@ -28,13 +27,9 @@ struct ContentSearcherView: View {
                     .padding(.leading, 1.su)
                 }
                 .padding(.horizontal)
-                List(searchContentViewModel.results) { result in
-                    NavigationLink(destination: ArtistDetailsView(searchResult: result)) {
-                        ScoreCell(
-                            title: result.title.viewLabel,
-                            subtitle: result.type.viewLabel.capitalized,
-                            imageURL: result.thumbURL
-                        )
+                List(searchContentViewModel.results) { record in
+                    NavigationLink(destination: ArtistView(selectedArtist: record)) {
+                        ScoreCell(title: record.name, subtitle: record.identifier, imageURL: record.thumbnailURL)
                     }
                 }
                 .overlay {
@@ -57,11 +52,10 @@ struct ContentSearcherView: View {
         )
 }
 
-
 struct ArtistDetailsView: View {
-    var searchResult: Search.Results
+    var searchResult: SearchItemModel
 
     var body: some View {
-        Text(searchResult.title.viewLabel)
+        Text(searchResult.name)
     }
 }

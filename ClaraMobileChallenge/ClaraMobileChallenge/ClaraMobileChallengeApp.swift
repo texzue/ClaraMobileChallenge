@@ -10,17 +10,17 @@ struct ClaraMobileChallengeApp: App {
     @StateObject private var vmAuthentication = AuthenticationViewModel(oauthService: OauthAuthenticator.shared)
     @StateObject private var vmSearchContent = SearchContentViewModel(artistInteractor: ConcreteArtistInteractor(networkInteractor: ConcreteNetworkInteractor()),
                                                                       imageInteractor: ConcreteImageInteractor())
+    @StateObject private var vmArtistDetails = ArtistDetailsViewModel(artistInteractor: ConcreteArtistInteractor(networkInteractor: ConcreteNetworkInteractor()),
+                                                                     imageInteractor: ConcreteImageInteractor())
+    @StateObject private var vmAlbumTracks = AlbumTracksViewModel(releasesInteractor: ConcreteReleasesInteractor(networkInteractor: ConcreteNetworkInteractor()))
 
     var body: some Scene {
         WindowGroup {
-//            ContentView(
-//                artistInteractor: ConcreteArtistInteractor(networkInteractor: networkInteractor),
-//                releaseInteractor: ConcreteReleasesInteractor(networkInteractor: networkInteractor)
-//            )
-
             AuthenticationView()
                 .environmentObject(vmAuthentication)
                 .environmentObject(vmSearchContent)
+                .environmentObject(vmArtistDetails)
+                .environmentObject(vmAlbumTracks)
                 .onOpenURL(perform: handleURL)
         }
     }
