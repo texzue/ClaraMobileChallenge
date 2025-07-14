@@ -15,7 +15,7 @@ final class AlbumTracksViewModel: ObservableObject {
     @Published var presentDismissAlert: Bool = false
 
     // MARK: Loading Indicators
-    @Published var loading = true
+    @Published var loading = false
 
     enum Actions {
         case getAlbumDetails(Int)
@@ -33,7 +33,6 @@ final class AlbumTracksViewModel: ObservableObject {
     func performAction(_ action: Actions) {
         switch action {
         case .getAlbumDetails(let id):
-            albumDetails = nil
             getAlbumDetails(id: id)
         }
     }
@@ -42,7 +41,8 @@ final class AlbumTracksViewModel: ObservableObject {
     private func getAlbumDetails(id: Int) {
         Task {
             await MainActor.run {
-                self.loading = true
+                albumDetails = nil
+                loading = true
             }
 
             let response = try await releasesInteractor.getReleaseDetails(with: id)
@@ -50,12 +50,13 @@ final class AlbumTracksViewModel: ObservableObject {
             case .success(let details):
                 let response: ReleaseDetailsModel = .init(releaseDetailsDTO: details)
                 await MainActor.run {
-                    self.loading = false
+                    loading = false
                     albumDetails = response
                 }
-            case .failure:
+            case .failure(let error):
+                print(error)
                 await MainActor.run {
-                    self.loading = false
+                    loading = false
                     dismiss()
                 }
             }

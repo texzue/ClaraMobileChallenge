@@ -10,7 +10,7 @@ import SwiftUI
 struct AlbumTracksView: View {
 
     @EnvironmentObject var vmAlbumTracks: AlbumTracksViewModel
-    let albumId: Int
+    @Binding var albumId: Int?
 
     var body: some View {
         Form {
@@ -33,7 +33,9 @@ struct AlbumTracksView: View {
         }
         .background(.contentBackground)
         .onAppear {
-            vmAlbumTracks.performAction(.getAlbumDetails(albumId))
+            if let albumId {
+                vmAlbumTracks.performAction(.getAlbumDetails(albumId))
+            }
         }
         .overlay {
             ProgressView()
@@ -45,7 +47,7 @@ struct AlbumTracksView: View {
 }
 
 #Preview {
-    AlbumTracksView(albumId: 1)
+    AlbumTracksView(albumId: .constant(1))
         .environmentObject(
             AlbumTracksViewModel(releasesInteractor: PreviewReleasesInteractor(returnErrorEnabled: false, networkErrorToReturn: .accessDenied))
         )

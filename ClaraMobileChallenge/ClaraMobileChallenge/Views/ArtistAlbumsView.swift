@@ -8,6 +8,11 @@
 import SwiftUI
 import UIKit
 
+class Object: Identifiable {
+    let id: String
+    init(_ id: String) { self.id = id }
+}
+
 struct ArtistAlbumsView: View {
 
     @EnvironmentObject var vmArtistDetails: ArtistDetailsViewModel
@@ -45,7 +50,7 @@ struct ArtistAlbumsView: View {
             }
         }
         .sheet(isPresented: $loadAlbumDetails) {
-            AlbumTracksView(albumId: lastAlbumIdSelected ?? 0)
+            AlbumTracksView(albumId: $lastAlbumIdSelected)
         }
     }
 }

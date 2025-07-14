@@ -54,7 +54,7 @@ extension ImageInteractor {
         guard let url else { return nil }
 
         guard remoteImageExistAtCachePath(url) else {
-            Debug.eval { print("Image \(url.lastPathComponent) doesn't exist locally") }
+//            Debug.eval { print("Image \(url.lastPathComponent) doesn't exist locally") }
             return nil
         }
 
@@ -65,7 +65,7 @@ extension ImageInteractor {
         if let image = UIImage(contentsOfFile: localPath.path) {
             return image
         } else {
-            Debug.eval { print("Image \(localPath) doesn't exist locally") }
+//            Debug.eval { print("Image \(localPath) doesn't exist locally") }
             return nil
         }
     }

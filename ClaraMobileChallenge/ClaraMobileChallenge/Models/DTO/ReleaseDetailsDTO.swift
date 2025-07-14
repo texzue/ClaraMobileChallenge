@@ -30,7 +30,6 @@ struct ReleaseDetailsDTO: Codable {
     let released: String?
     let releasedFormatted: String?
     let resourceURL: String? // URL
-    let series: [String]?
     let status: String?
     let styles: [String]?
     let tracklist: [Track]?

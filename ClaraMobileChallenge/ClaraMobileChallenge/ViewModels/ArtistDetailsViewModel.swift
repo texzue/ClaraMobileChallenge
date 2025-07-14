@@ -95,6 +95,10 @@ final class ArtistDetailsViewModel: ObservableObject {
         releasesNextPage = 1
         Task {
             do {
+                await MainActor.run {
+                    artistDetails = nil
+                    artistReleases = []
+                }
                 let responseArtist = try await artistInteractor.getArtistDetails(with: artistId)
                 switch responseArtist {
                 case .success(let artist):
