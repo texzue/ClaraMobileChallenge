@@ -26,7 +26,6 @@ struct ArtistAlbumsView: View {
     var body: some View {
         List {
             ForEach(vmArtistDetails.artistReleases) { item in
-
                 Button {
                     lastAlbumIdSelected = item.mainReleaseID
                     loadAlbumDetails.toggle()
@@ -40,7 +39,15 @@ struct ArtistAlbumsView: View {
                         CustomAsynkView(url: item.thumbnail, imageInteractor: imageInteractor)
                     }
                 }
-
+            }
+            if !vmArtistDetails.loading && !vmArtistDetails.noMoreData {
+                Text("Loading ...")
+                    .customSubHeaderStyle()
+                    .onAppear { vmArtistDetails.performAction(.loadNextRecords(selectedArtist.id))
+                    }
+            }
+            if vmArtistDetails.noMoreData {
+                Text("No More Albums").font(.caption2.bold())
             }
         }
         .background(.contentBackground)

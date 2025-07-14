@@ -62,6 +62,9 @@
         }
       }
     },
+    "Loading ..." : {
+
+    },
     "Login" : {
 
     },
@@ -69,6 +72,9 @@
 
     },
     "More" : {
+
+    },
+    "No More Albums" : {
 
     },
     "No results" : {

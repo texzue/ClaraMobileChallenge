@@ -17,12 +17,15 @@ final class ArtistDetailsViewModel: ObservableObject {
     @Published var artistReleases: [ReleaseModel] = []
     @Published var artistImages: [URL] = []
 
+    // MARK: Pagination
     private var releasesNextPage = 1
+    private var maxPagination = 1
+    @Published var noMoreData = false
 
     // MARK: Loading Indicators
-    @Published var loading = true
+    @Published var loading = false
 
-    // MARK: - Alerts
+    // MARK: Alerts
     @Published private var presentDismissAlert = false
 
     // MARK: - Actions definition
@@ -112,7 +115,9 @@ final class ArtistDetailsViewModel: ObservableObject {
                         } ?? []
                     }
                 case .failure:
-                    presentDismissAlert = true
+                    await MainActor.run {
+                        presentDismissAlert = true
+                    }
                 }
 
             } catch {
@@ -122,23 +127,49 @@ final class ArtistDetailsViewModel: ObservableObject {
     }
 
     private func getNextRecord(artistId: Int) {
+        guard releasesNextPage <= maxPagination
+        else {
+            Task {
+                await MainActor.run {
+                    noMoreData = true
+                }
+            }
+            return
+        }
         Task {
             do {
+                await MainActor.run {
+                    loading = true
+                }
                 let response = try await artistInteractor.getArtistReleases(artistId: artistId, page: releasesNextPage)
                 switch response {
                 case .success(let releasesResponse):
                     let releases = releasesResponse.releases?.compactMap { releaseDTO in
                         ReleaseModel(release: releaseDTO)
                     } ?? []
+                    let maxPagination = releasesResponse.pagination?.pages ?? 1
                     getImages(from: releases)
 
                     await MainActor.run {
-                        artistReleases = releases
+                        artistReleases += releases
                         releasesNextPage += 1
+                        self.maxPagination = maxPagination
+                        loading = false
                     }
 
-                case .failure:
-                    presentDismissAlert = true
+                case .failure(let error):
+                    switch error {
+                    case .noContent, .general:
+                        await MainActor.run {
+                            loading = false
+                            presentDismissAlert = true
+                            noMoreData = true
+                        }
+                    default:
+                        await MainActor.run {
+                            loading = false
+                        }
+                    }
                 }
             } catch {
                 dismiss()

@@ -30,31 +30,7 @@ struct ScoreCell: View {
                     .foregroundStyle(.secondary)
             }
             Spacer()
-            if let image = imageInteractor.getImageLocally(url: imageURL){
-                Image(uiImage: image)
-                    .resizable()
-                    .foregroundStyle(.labelSecondary)
-                    .scaledToFill()
-                    .padding(.all, 3)
-                    .frame(width: 80, height: 80)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .accessibilityIgnoresInvertColors()
-            } else {
-                AsyncImage(url: imageURL, content: { _ in }, placeholder: {
-                    Image(systemName: "person.fill.questionmark")
-                        .resizable()
-                        .foregroundStyle(.labelSecondary)
-                        .scaledToFit()
-                        .padding(.all, 3)
-                        .frame(width: 80, height: 80)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .accessibilityIgnoresInvertColors()
-                })
-                .scaledToFill()
-                .frame(width: 80, height: 80)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .shadow(radius: 2)
-            }
+            CustomAsynkView(url: imageURL, imageInteractor: imageInteractor)
         }
     }
 }
