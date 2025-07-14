@@ -36,7 +36,7 @@ struct LoginView: View {
                 self.authenticationViewModel.performAction(.authenticate)
             }) {
                 Text("Login")
-                    .font(.title)
+                    .font(.title.bold().monospaced())
             }
             .foregroundStyle(.buttonLabel)
             .buttonStyle(.borderedProminent)

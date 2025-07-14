@@ -18,9 +18,9 @@ struct ScoreCell: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.headline)
+                    .customHeaderStyle()
                 Text(subtitle)
-                    .font(.footnote)
+                    .customSubHeaderStyle()
                     .foregroundStyle(.secondary)
             }
             Spacer()

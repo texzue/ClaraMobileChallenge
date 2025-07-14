@@ -34,7 +34,7 @@ struct ContentSearcherView: View {
                             }
                     }
                     if searchContentViewModel.noMoreData {
-                        Text("No More Artists").font(.caption2.bold())
+                        Text("No More Artists").font(.caption2.bold().monospaced())
                     }
                 }
                 .overlay {
@@ -48,15 +48,19 @@ struct ContentSearcherView: View {
                         .textFieldStyle(.roundedBorder)
                         .focused($focusedField, equals: .query)
                         .submitLabel(.done)
+                        .font(.headline.monospaced())
                         .onSubmit {
                             searchContentViewModel.performAction(.search(query))
                             focusedField = nil
                         }
+                        .modifier(TextFieldClearButton(text: $query))
+                        .autocorrectionDisabled()
+                        
                     Button {
                         searchContentViewModel.performAction(.search(query))
                         focusedField = nil
                     } label: {
-                        Text("Search").font(.headline)
+                        Text("Search").font(.headline.monospaced().bold())
                     }
                     .foregroundStyle(.buttonLabel)
                     .buttonStyle(.borderedProminent)
