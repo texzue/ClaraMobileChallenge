@@ -16,17 +16,8 @@ struct ContentSearcherView: View {
 
         NavigationView {
             VStack {
-                HStack(alignment: .center, spacing: 1.su) {
-                    TextField("Type an artist name...", text: $query)
-                        .textFieldStyle(.roundedBorder)
-                    Button {
-                        searchContentViewModel.performAction(.search(query))
-                    } label: {
-                        Text("Search")
-                    }
-                    .padding(.leading, 1.su)
-                }
-                .padding(.horizontal)
+
+
                 List(searchContentViewModel.results) { record in
                     NavigationLink(destination: ArtistView(selectedArtist: record)) {
                         ScoreCell(title: record.name, subtitle: record.identifier, imageURL: record.thumbnailURL)
@@ -34,11 +25,26 @@ struct ContentSearcherView: View {
                 }
                 .overlay {
                     if searchContentViewModel.results.isEmpty {
-                        // Search unavailable view
                         EmptyContentView(query: $query)
                     }
                 }
+
+                HStack(alignment: .center, spacing: 1.su) {
+                    TextField("Type an artist name...", text: $query)
+                        .textFieldStyle(.roundedBorder)
+                    Button {
+                        searchContentViewModel.performAction(.search(query))
+                    } label: {
+                        Text("Search").font(.headline)
+                    }
+                    .foregroundStyle(.buttonLabel)
+                    .buttonStyle(.borderedProminent)
+                    .padding(.leading, 1.su)
+                }
+                .padding(.horizontal, 2.su)
+                .padding(.vertical, 1.su)
             }
+            .background(.contentBackground)
         }
     }
 }

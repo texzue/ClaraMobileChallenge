@@ -13,35 +13,34 @@ struct AlbumTracksView: View {
     let albumId: Int
 
     var body: some View {
-
-            Form {
-                Section {
-                    RowView(title: "Album", subtitle: vmAlbumTracks.albumDetails?.title ?? "")
-                    RowView(title: "Companies", subtitle: vmAlbumTracks.albumDetails?.companies ?? "")
-                    RowView(title: "Genres", subtitle: vmAlbumTracks.albumDetails?.genres ?? "")
-                    RowView(title: "Year", subtitle: vmAlbumTracks.albumDetails?.year ?? "")
-                    RowView(title: "Description", subtitle: vmAlbumTracks.albumDetails?.desciption ?? "", isVertical: true, smallDescription: true)
-                } header: {
-                    Text("Details")
+        Form {
+            Section {
+                RowView(title: "Album", subtitle: vmAlbumTracks.albumDetails?.title ?? "")
+                RowView(title: "Companies", subtitle: vmAlbumTracks.albumDetails?.companies ?? "")
+                RowView(title: "Genres", subtitle: vmAlbumTracks.albumDetails?.genres ?? "")
+                RowView(title: "Year", subtitle: vmAlbumTracks.albumDetails?.year ?? "")
+                RowView(title: "Description", subtitle: vmAlbumTracks.albumDetails?.desciption ?? "", isVertical: true, smallDescription: true)
+            } header: {
+                Text("Details")
+            }
+            Section {
+                ForEach(vmAlbumTracks.albumDetails?.traks ?? []) { track in
+                    Text(track.name)
                 }
-                Section {
-                    ForEach(vmAlbumTracks.albumDetails?.traks ?? []) { track in
-                        Text(track.name)
-                    }
-                } header: {
-                    Text("Tracks")
-                }
+            } header: {
+                Text("Tracks")
             }
-            .onAppear {
-                vmAlbumTracks.performAction(.getAlbumDetails(albumId))
-            }
-            .overlay {
-                ProgressView()
-                    .progressViewStyle(.circular)
-                    .scaleEffect(1.5)
-                    .opacity(vmAlbumTracks.loading ? 1 : 0)
-            }
-
+        }
+        .background(.contentBackground)
+        .onAppear {
+            vmAlbumTracks.performAction(.getAlbumDetails(albumId))
+        }
+        .overlay {
+            ProgressView()
+                .progressViewStyle(.circular)
+                .scaleEffect(1.5)
+                .opacity(vmAlbumTracks.loading ? 1 : 0)
+        }
     }
 }
 

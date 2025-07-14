@@ -37,7 +37,9 @@ struct ArtistAlbumsView: View {
                 }
 
             }
-        }.onAppear {
+        }
+        .background(.contentBackground)
+        .onAppear {
             if loadPreview {
                 vmArtistDetails.performAction(.loadNextRecords(selectedArtist.id))
             }

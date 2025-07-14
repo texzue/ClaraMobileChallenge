@@ -70,12 +70,14 @@ struct ArtistView: View {
                 Text("More")
             }
         }
+        .background(.contentBackground)
         .navigationTitle(selectedArtist.name)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear() {
             vmArtistDetails.performAction(.loadArtistDetails(selectedArtist.id))
         }
     }
+    
 }
 
 
